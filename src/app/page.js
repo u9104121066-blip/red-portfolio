@@ -13,32 +13,27 @@ export default function Home() {
       {/* ================= HERO SECTION (RESPONSIVE FIX) ================= */}
       <section className="relative h-screen w-full flex flex-col items-center justify-end pb-24 md:pb-32 overflow-hidden">
 
-        {/* 1. BACKGROUND IMAGE */}
+              {/* 1. BACKGROUND IMAGE (Maschera Radiale) */}
         <div className="absolute inset-0 z-0 bg-black flex justify-center overflow-hidden">
             
             <div className="relative h-full w-full md:w-auto" 
                  style={{ 
                     /* 
-                       Su mobile la maschera è meno aggressiva (5% ai bordi) per non tagliare il viso.
-                       Su desktop l'effetto rimane quello che abbiamo deciso prima.
+                       RADIAL GRADIENT:
+                       - black 40%: L'immagine è visibile al 100% nel centro (il cerchio centrale).
+                       - transparent 80%: L'immagine svanisce completamente verso i bordi.
                     */
-                    maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+                    
                  }}>
                 
                 <img 
                     src="/red.png" 
                     alt="Background" 
-                    /* 
-                       RESPONSIVE RULES:
-                       - Mobile: w-full (Occupa tutta la larghezza)
-                       - Desktop (md): w-auto (Mantiene le proporzioni originali)
-                    */
                     className="h-full w-full md:w-auto object-cover object-top opacity-80" 
                 />
             </div>
 
-            {/* Sfumatura Basso (Più alta su mobile per garantire leggibilità del testo) */}
+            {/* Sfumatura Basso (Questa serve per fondere i piedi dell'immagine col resto del sito) */}
             <div className="absolute bottom-0 left-0 w-full h-[60vh] md:h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent"></div>
         </div>
 
@@ -143,7 +138,7 @@ export default function Home() {
       <section className="py-20 bg-zinc-950 border-y border-zinc-900">
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-10">
-                <p className="text-zinc-500 text-xs uppercase tracking-[0.3em]">You Can Find Me On</p>
+                <p className="text-zinc-500 text-xs uppercase tracking-[0.3em]">my tech arsenal</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-zinc-800">
@@ -155,7 +150,7 @@ export default function Home() {
                     { name: 'React', icon: <Code2 className="w-6 h-6"/> },
                     { name: 'Docker', icon: <Database className="w-6 h-6"/> },
                     { name: 'Framer', icon: <Smartphone className="w-6 h-6"/> },
-                    { name: 'Shopify', icon: <Layers className="w-6 h-6"/> },
+                    { name: 'Wordpress', icon: <Layers className="w-6 h-6"/> },
                 ].map((item, i) => (
                     <div key={i} className="group border-r border-b border-zinc-800 p-8 flex flex-col items-center justify-center hover:bg-zinc-900/50 transition duration-500 cursor-default">
                         <div className="mb-4 text-zinc-600 group-hover:text-white transition duration-300">{item.icon}</div>
@@ -167,95 +162,116 @@ export default function Home() {
       </section>
 
 
-      {/* ================= SERVICES SECTION (SPLIT LAYOUT) ================= */}
-      {/* Questa è la modifica principale per matchare Julian Tobias: Lista a Sx, Foto a Dx */}
+      
+                   {/* ================= SERVICES SECTION (ZIG-ZAG LAYOUT) ================= */}
       <section id="services" className="py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Expertise</h6>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">COMPETENZE TECNICHE & 
-
- <br />SPECIALIZZAZIONI </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">COMPETENZE TECNICHE & <br /> SPECIALIZZAZIONI</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
-          {/* LEFT: TEXT LIST */}
-          <div className="space-y-4">
-            {/* Service 01 */}
-            <div className="group p-8 border border-zinc-900 bg-zinc-900/20 hover:border-zinc-700 hover:bg-zinc-900/40 rounded-2xl transition duration-500 cursor-pointer">
-                <div className="flex justify-between items-start mb-4">
-                    <span className="text-zinc-600 font-mono text-sm">01.</span>
-                    <div className="p-2 bg-black rounded-full border border-zinc-800 group-hover:border-red-600 transition">
-                         <Layers className="text-zinc-400 group-hover:text-red-600 transition w-5 h-5" />
+        <div className="space-y-24">
+            
+            {/* SERVICE 01 (Testo SX - Foto DX) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Testo */}
+                <div className="group p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500">
+                    <div className="flex justify-between items-start mb-6">
+                        <span className="text-zinc-600 font-mono text-sm">01.</span>
+                        <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
+                            <Layers className="w-6 h-6" />
+                        </div>
                     </div>
+                    <h3 className="text-3xl font-bold text-white mb-4">FUNNEL ENGINEERING & FRONTEND</h3>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Architetture High-Ticket</strong>: Progettazione integrale del percorso utente per massimizzare AOV (Average Order Value) e LTV, utilizzando sia builder rapidi che codice custom.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Sviluppo Web App (React/Next.js)</strong>: Creazione di interfacce utente ultra-veloci e SEO-friendly per progetti che richiedono performance superiori ai classici CMS.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>UX/UI Conversion Driven</strong>: Design pulito e psicologicamente orientato alla vendita, ottimizzato per mobile e velocità di caricamento.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                        Stack: React, Next.js, ClickFunnels, GHL, WordPress, Tailwind CSS.
+                    </p>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-600 transition">FUNNEL ENGINEERING & FRONTEND</h3>
-                
-<p><strong>Architetture High-Ticket</strong>: Progettazione integrale del percorso utente per massimizzare AOV (Average Order Value) e LTV, utilizzando sia builder rapidi che codice custom.</p>
-<p><strong>Sviluppo Web App (React/Next.js)</strong>: Creazione di interfacce utente ultra-veloci e SEO-friendly per progetti che richiedono performance superiori ai classici CMS.</p>
-<p><strong>UX/UI Conversion Driven</strong>: Design pulito e psicologicamente orientato alla vendita, ottimizzato per mobile e velocità di caricamento.</p>
-<p><strong>Stack: React, Next.js, ClickFunnels, GHL, WordPress, Tailwind CSS.</strong></p>
+                {/* Immagine */}
+                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+                    <img src="/red.png" alt="Funnel" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                </div>
             </div>
 
-            {/* Service 02 */}
-            <div className="group p-8 border border-zinc-900 bg-zinc-900/20 hover:border-zinc-700 hover:bg-zinc-900/40 rounded-2xl transition duration-500 cursor-pointer">
-                <div className="flex justify-between items-start mb-4">
-                    <span className="text-zinc-600 font-mono text-sm">02.</span>
-                    <div className="p-2 bg-black rounded-full border border-zinc-800 group-hover:border-red-600 transition">
-                        <Server className="text-zinc-400 group-hover:text-red-600 transition w-5 h-5" />
-                    </div>
+
+            {/* SERVICE 02 (Foto SX - Testo DX) - Invertito su Desktop */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Immagine (Su mobile va sotto, su desktop va a sinistra grazie a 'order') */}
+                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group order-2 lg:order-1">
+                    <img src="/rap.png" alt="Tracking" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-600 transition">DATA INTEGRITY & ANALYTICS</h3>
-                <p><strong>Server-Side Tracking</strong>: Implementazione avanzata di GTM Server-Side e CAPI (Facebook, TikTok) per recuperare i dati persi dai blocchi dei browser e cookie policy.</p>
-                <p><strong>UTM Strategy Avanzata</strong>: Standardizzazione dei parametri di tracciamento per sapere esattamente quale ad, email o link ha generato la vendita.</p>
-                <p><strong>Audit & Debugging</strong>: Analisi profonda di setup esistenti per individuare discrepanze nei dati tra Business Manager e CRM.</p>
-                <p><strong>Stack: Google Tag Manager (Web & Server), GA4, Clarity, Stape.io.</strong></p>
+                {/* Testo */}
+                <div className="group p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500 order-1 lg:order-2">
+                    <div className="flex justify-between items-start mb-6">
+                        <span className="text-zinc-600 font-mono text-sm">02.</span>
+                        <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
+                            <Server className="w-6 h-6" />
+                        </div>
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-4">DATA INTEGRITY & ANALYTICS</h3>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Server-Side Tracking</strong>: Implementazione avanzata di GTM Server-Side e CAPI (Facebook, TikTok) per recuperare i dati persi dai blocchi dei browser e cookie policy.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>UTM Strategy Avanzata</strong>: Standardizzazione dei parametri di tracciamento per sapere esattamente quale ad, email o link ha generato la vendita.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Audit & Debugging</strong>: Analisi profonda di setup esistenti per individuare discrepanze nei dati tra Business Manager e CRM.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                        Stack: Google Tag Manager (Web & Server), GA4, Clarity, Stape.io.
+                    </p>
+                </div>
             </div>
 
-            {/* Service 03 */}
-            <div className="group p-8 border border-zinc-900 bg-zinc-900/20 hover:border-zinc-700 hover:bg-zinc-900/40 rounded-2xl transition duration-500 cursor-pointer">
-                <div className="flex justify-between items-start mb-4">
-                    <span className="text-zinc-600 font-mono text-sm">03.</span>
-                    <div className="p-2 bg-black rounded-full border border-zinc-800 group-hover:border-red-600 transition">
-                        <Cpu className="text-zinc-400 group-hover:text-red-600 transition w-5 h-5" />
-                    </div>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-600 transition">HYPER-AUTOMATION & BACKEND</h3>
-                <p><strong>Workflow Automation</strong>: Creazione di flussi complessi con n8n o Make per automatizzare onboarding clienti, fatturazione e nurturing.</p>
-                <p><strong>CRM Integration</strong>: Sincronizzazione bidirezionale dei dati tra il funnel e il database contatti (ActiveCampaign, GHL, HubSpot).</p>
-                <p><strong>Dashboarding</strong>: Estrazione dati via API per alimentare dashboard di controllo KPI in tempo reale per il team vendita.</p>
-                <p><strong>tack: n8n, Zapier, Make, Google Sheets API, Webhooks, Node.js</strong></p>
-            </div>
-          </div>
 
-          {/* RIGHT: IMAGE PORTRAIT */}
-          <div className="relative h-full min-h-[600px] w-full bg-zinc-900 rounded-2xl overflow-hidden hidden lg:block border border-zinc-800 group">
-             
-             {/* QUI ABBIAMO INSERITO L'IMMAGINE */}
-             <img 
-                src="/rap.png" 
-                alt="Service Portrait" 
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-1000"
-             />
-             
-             {/* Overlay Sfumato */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-             
-             {/* Floating Badge sulla foto */}
-             <div className="absolute bottom-10 left-8 right-8">
-                <div className="p-6 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl">
-                    <p className="text-white text-sm italic">"L'infrastruttura è l'asset più importante nel marketing moderno."</p>
-                    <div className="mt-4 flex items-center gap-2">
-                         <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></div>
-                         <span className="text-xs text-zinc-400 uppercase tracking-wider">System Operational</span>
+            {/* SERVICE 03 (Testo SX - Foto DX) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Testo */}
+                <div className="group p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500">
+                    <div className="flex justify-between items-start mb-6">
+                        <span className="text-zinc-600 font-mono text-sm">03.</span>
+                        <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
+                            <Cpu className="w-6 h-6" />
+                        </div>
                     </div>
+                    <h3 className="text-3xl font-bold text-white mb-4">HYPER-AUTOMATION & BACKEND</h3>
+                    
+                    {/* HO CORRETTO IL COPY QUI SOTTO PERCHÉ ERA DUPLICATO DAL PRIMO */}
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>CRM Integration</strong>: Sincronizzazione bidirezionale dei dati tra il funnel e il database contatti (ActiveCampaign, HubSpot, GoHighLevel) per nurturing automatico.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Dashboards & Reporting</strong>: Estrazione dati via API per alimentare dashboard di controllo KPI in tempo reale, eliminando i report manuali su Excel.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                        <strong>Error Handling</strong>: Sistemi di notifica automatica (Slack/Telegram) che avvisano immediatamente se un lead non viene processato correttamente.
+                    </p>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                        Stack: n8n, Zapier, Make, Google Sheets API, Webhooks, Node.js.
+                    </p>
+      
                 </div>
-             </div>
-          </div>
+                {/* Immagine */}
+                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+                    <img src="/red.png" alt="Automation" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                </div>
+            </div>
 
         </div>
       </section>
-
 
       {/* ================= PORTFOLIO SECTION (NUOVA) ================= */}
       <section className="py-24 border-t border-zinc-900 bg-zinc-950">
