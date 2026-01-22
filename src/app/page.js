@@ -2,6 +2,8 @@
 
 "use client";
 import React from 'react';
+import Link from 'next/link';
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/ContactForm";
 import { ArrowRight, Layers, Database, Cpu, Zap, Code2, LayoutGrid, Terminal, Smartphone, Globe, Server } from "lucide-react";
@@ -197,8 +199,8 @@ export default function Home() {
                     </p>
                 </div>
                 {/* Immagine */}
-                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
-                    <img src="/red.png" alt="Funnel" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+                    <img src="/funnel.png" alt="Funnel" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                 </div>
             </div>
@@ -207,8 +209,8 @@ export default function Home() {
             {/* SERVICE 02 (Foto SX - Testo DX) - Invertito su Desktop */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Immagine (Su mobile va sotto, su desktop va a sinistra grazie a 'order') */}
-                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group order-2 lg:order-1">
-                    <img src="/rap.png" alt="Tracking" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group order-2 lg:order-1">
+                    <img src="/funnel3.png" alt="Tracking" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                 </div>
                 {/* Testo */}
@@ -264,8 +266,8 @@ export default function Home() {
       
                 </div>
                 {/* Immagine */}
-                <div className="relative h-[400px] w-full bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
-                    <img src="/red.png" alt="Automation" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+                    <img src="/funnel4.png" alt="Automation" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                 </div>
             </div>
@@ -273,54 +275,109 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PORTFOLIO SECTION (NUOVA) ================= */}
-      <section className="py-24 border-t border-zinc-900 bg-zinc-950">
+                {/* ================= PORTFOLIO SECTION (3 PROGETTI REALI) ================= */}
+      <section id="portfolio" className="py-24 border-t border-zinc-900 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-                <div>
-                    <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Selected Works</h6>
-                    <h2 className="text-4xl font-bold text-white">Featured Projects</h2>
+            
+            <Reveal>
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div>
+                        <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Selected Works</h6>
+                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">Featured Projects</h2>
+                    </div>
+                    <Link href="/progetti" className="hidden md:flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest border-b border-zinc-800 pb-1 hover:text-red-600 hover:border-red-600 transition-all duration-300">
+                        Vedi Tutti i Progetti <ArrowRight className="w-4 h-4"/>
+                    </Link>
                 </div>
-                <button className="hidden md:flex items-center gap-2 text-sm font-bold text-white border-b border-red-600 pb-1 hover:text-red-500 transition">
-                    View All Projects <ArrowRight className="w-4 h-4"/>
-                </button>
+            </Reveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-16 md:gap-y-0">
+                
+                {/* PROGETTO 1: Inglese Divertente */}
+                <Reveal delay={0.2}>
+                    <div className="group cursor-pointer mb-12 md:mb-24">
+                        <Link href="/progetti/inglese-divertente">
+                            <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
+                                <img 
+                                    src="/red.png" 
+                                    alt="Inglese Divertente" 
+                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                            </div>
+                            <div className="flex justify-between items-start px-2">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">High-Volume Tripwire Ecosystem</h3>
+                                    <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">WordPress • CRM Automation • Sales Ops</p>
+                                </div>
+                                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
+                                    <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-4 h-4" />
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </Reveal>
+
+                {/* PROGETTO 2: Digital Shipping (OFFSET GIÙ) */}
+                <Reveal delay={0.4}>
+                    <div className="group cursor-pointer md:mt-32 mb-12 md:mb-24">
+                        <Link href="/progetti/digital-shipping-revolution">
+                            <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
+                                <img 
+                                    src="/rap.png" 
+                                    alt="Digital Shipping" 
+                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                            </div>
+                            <div className="flex justify-between items-start px-2">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Deep-Funnel B2B Architecture</h3>
+                                    <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">GoHighLevel • Stripe API • Webhooks</p>
+                                </div>
+                                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
+                                    <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-4 h-4" />
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </Reveal>
+
+                {/* PROGETTO 3: Misterbox (Sotto il Progetto 1) */}
+                <Reveal delay={0.2}>
+                    <div className="group cursor-pointer mb-12 md:mb-24">
+                        <Link href="/progetti/misterbox">
+                            <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
+                                <img 
+                                    src="/red.png" 
+                                    alt="Misterbox" 
+                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                            </div>
+                            <div className="flex justify-between items-start px-2">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Gamified Commerce Architecture</h3>
+                                    <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">Next.js 14 • NestJS • Prisma • Docker</p>
+                                </div>
+                                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
+                                    <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-4 h-4" />
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </Reveal>
+
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Project 1 */}
-                <div className="group cursor-pointer">
-                    <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
-                        <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-sm">[PROJECT THUMBNAIL]</div>
-                        <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition duration-500"></div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">E-Learning Platform Scale</h3>
-                            <p className="text-zinc-500 mt-2 text-sm">Custom Next.js LMS • Stripe Connect</p>
-                        </div>
-                        <ArrowRight className="text-zinc-600 group-hover:text-red-600 -rotate-45 group-hover:rotate-0 transition duration-300" />
-                    </div>
-                </div>
-
-                {/* Project 2 (Offset Layout) */}
-                <div className="group cursor-pointer md:mt-12">
-                    <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
-                        <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-sm">[PROJECT THUMBNAIL]</div>
-                        <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition duration-500"></div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">High-Ticket Funnel System</h3>
-                            <p className="text-zinc-500 mt-2 text-sm">n8n Automation • Server-Side GTM</p>
-                        </div>
-                        <ArrowRight className="text-zinc-600 group-hover:text-red-600 -rotate-45 group-hover:rotate-0 transition duration-300" />
-                    </div>
-                </div>
+            
+            {/* Mobile "View All" Button */}
+            <div className="mt-8 md:hidden text-center">
+                <Link href="/progetti" className="inline-flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest border border-zinc-800 px-8 py-4 rounded-full">
+                    View All Projects <ArrowRight className="w-4 h-4"/>
+                </Link>
             </div>
         </div>
       </section>
-
-
       {/* ================= CONTACT SECTION ================= */}
       <section id="contact" className="py-24 px-6 relative overflow-hidden">
         {/* Decorative BG */}

@@ -2,39 +2,36 @@
 import React from 'react';
 import Navbar from "@/components/Navbar";
 import Link from 'next/link';
-import { ArrowRight, ExternalLink, Code2 } from "lucide-react";
-
+import { ArrowRight, Code2 } from "lucide-react";
 export default function Progetti() {
   
-  // Questo array simula il tuo database di progetti. 
-  // In futuro potremo aggiungerne quanti ne vuoi qui.
   const projects = [
     {
         id: 1,
-        title: "E-Learning Platform Scale",
-        category: "EdTech / LMS",
-        tech: "Next.js, Stripe Connect, Mux Video",
-        description: "Piattaforma proprietaria per corsi online. Migrazione da Teachable per risparmiare il 10% di commissioni e avere controllo totale sui dati utente.",
-        image: "/red.png", // Usa i tuoi placeholder per ora
-        link: "/progetti/e-learning" // Questo sarà il link alla pagina singola
+        title: "HIGH-VOLUME TRIPWIRE ECOSYSTEM",
+        category: "Funnel Engineering / Sales Ops",
+        tech: "WordPress, FunnelKit, ActiveCampaign, Zapier",
+        description: "Infrastruttura ibrida progettata per gestire oltre 200 lead/giorno con tracciamento del ROI in tempo reale.",
+        image: "/red.png", 
+        link: "/progetti/inglese-divertente" 
     },
     {
         id: 2,
-        title: "High-Ticket Funnel System",
-        category: "Marketing Automation",
-        tech: "n8n, ActiveCampaign API, Next.js",
-        description: "Ecosistema di vendita automatizzato. Sincronizzazione lead in tempo reale tra Meta Ads e CRM con qualifica automatica via AI.",
-        image: "/rap.png",
-        link: "/progetti/funnel-system"
+        title: "DEEP-FUNNEL B2B ARCHITECTURE",
+        category: "B2B Strategy / Automation",
+        tech: "GoHighLevel, Stripe API, Zapier, Kajabi",
+        description: "Sistema 'Self-Liquidating' con One-Click Upsells e orchestrazione webhook per liquidare i costi pubblicitari.",
+        image: "/rap.png", 
+        link: "/progetti/digital-shipping-revolution" 
     },
     {
         id: 3,
-        title: "Real Estate Dashboard",
-        category: "SaaS / Internal Tool",
-        tech: "React, Supabase, Google Maps API",
-        description: "Gestionale interno per agenzia immobiliare. Mappa interattiva degli immobili e generazione automatica dei contratti in PDF.",
-        image: "/red.png",
-        link: "/progetti/real-estate"
+        title: "GAMIFIED COMMERCE ARCHITECTURE",
+        category: "Software Engineering / Full-Stack",
+        tech: "Next.js 14, NestJS, Prisma, PostgreSQL, Docker",
+        description: "Piattaforma Mystery Box complessa con logica RNG sicura lato server e animazioni GSAP ad alta frequenza.",
+        image: "/red.png", 
+        link: "/progetti/misterbox" 
     }
   ];
 
@@ -43,78 +40,66 @@ export default function Progetti() {
       <Navbar />
 
       {/* HEADER */}
-      <section className="pt-40 pb-20 px-6 border-b border-zinc-900 bg-zinc-950/50">
-        <div className="max-w-7xl mx-auto">
-            <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">
-                Portfolio
-            </h6>
-            <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6">
-                Costruiamo <br />
-                <span className="text-zinc-400">Asset Digitali.</span>
+      <section className="pt-48 pb-24 px-6 border-b border-zinc-900 bg-zinc-950/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left">
+            <h6 className="text-red-600 font-bold uppercase tracking-[0.5em] text-[10px] mb-6">Portfolio Selezionato</h6>
+            <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-8">
+                ARCHITETTURE <br />
+                <span className="text-zinc-800">PER LO SCALING.</span>
             </h1>
         </div>
       </section>
 
-      {/* PROJECT GRID */}
+      {/* LISTA PROGETTI */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 gap-20">
-            
+        <div className="grid grid-cols-1 gap-32">
             {projects.map((project, index) => (
-                <div key={index} className="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-b border-zinc-900 pb-20 last:border-0">
-                    
-                    {/* IMMAGINE (Cliccabile) */}
-                    <Link href={project.link} className="lg:col-span-7 relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 aspect-video group-hover:border-red-600/30 transition duration-500 block">
-                        <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700" 
-                        />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                <div key={index} className="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-b border-zinc-900 pb-32 last:border-0">
+                    <Link href={project.link} className="lg:col-span-7 relative aspect-square md:aspect-video lg:aspect-square overflow-hidden rounded-3xl border border-zinc-900 bg-zinc-950 group-hover:border-red-600/30 transition-all duration-700 block">
+                        <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition duration-1000" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                     </Link>
-
-                    {/* TESTO */}
-                    <div className="lg:col-span-5 space-y-6">
-                        <div className="flex items-center gap-3">
-                             <span className="font-mono text-red-600 text-sm">0{index + 1}</span>
-                             <span className="h-[1px] w-12 bg-zinc-800"></span>
-                             <span className="text-zinc-500 text-xs uppercase tracking-widest">{project.category}</span>
+                    <div className="lg:col-span-5 space-y-8">
+                        <div className="flex items-center gap-4">
+                             <span className="font-mono text-red-600 text-sm font-bold">0{index + 1} //</span>
+                             <span className="text-zinc-500 text-[10px] uppercase tracking-[0.3em] font-bold">{project.category}</span>
                         </div>
-                        
-                        <h2 className="text-4xl font-bold text-white group-hover:text-red-600 transition duration-300">
+                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none group-hover:text-red-600 transition duration-300">
                             <Link href={project.link}>{project.title}</Link>
                         </h2>
-                        
-                        <p className="text-zinc-400 leading-relaxed">
-                            {project.description}
-                        </p>
-
-                        <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 bg-zinc-900/50 p-3 rounded-lg border border-zinc-800 w-fit">
-                            <Code2 className="w-4 h-4" /> {project.tech}
+                        <p className="text-zinc-400 text-lg leading-relaxed font-light">{project.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                            {project.tech.split(', ').map((t, i) => (
+                                <span key={i} className="flex items-center gap-2 text-[10px] font-mono text-zinc-500 bg-zinc-950 p-2 border border-zinc-900 rounded-md">
+                                    <Code2 className="w-3 h-3 text-red-600" /> {t}
+                                </span>
+                            ))}
                         </div>
-
-                        <div className="pt-4">
-                            <Link href={project.link} className="inline-flex items-center gap-2 text-white font-bold border-b border-red-600 pb-1 hover:text-red-500 transition">
-                                Guarda il Caso studio <ArrowRight className="w-4 h-4" />
+                        <div className="pt-6 border-t border-zinc-900">
+                            <Link href={project.link} className="group/btn inline-flex items-center gap-4 text-white font-bold uppercase text-xs tracking-[0.3em] hover:text-red-600 transition-all">
+                                Guarda il Caso Studio 
+                                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover/btn:border-red-600 group-hover/btn:translate-x-2 transition-all duration-300"><ArrowRight className="w-4 h-4" /></div>
                             </Link>
                         </div>
                     </div>
-
                 </div>
             ))}
-
         </div>
       </section>
 
-      {/* CTA FOOTER */}
-      <section className="py-24 border-t border-zinc-900 text-center">
-        <h2 className="text-3xl font-bold text-white mb-6">Hai un progetto simile in mente?</h2>
-        <Link href="/#contact">
-            <button className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition">
-                Parliamone
-            </button>
-        </Link>
+      {/* CTA FINALE */}
+      <section className="py-32 border-t border-zinc-900 text-center relative overflow-hidden bg-zinc-950/20">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-red-600/5 blur-[100px] rounded-full"></div>
+        <div className="relative z-10">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-10 uppercase tracking-tighter leading-tight">Hai un progetto simile <br /> in mente?</h2>
+            <Link href="/#contact">
+                <button className="px-12 py-5 bg-white text-black font-bold rounded-full uppercase text-xs tracking-[0.3em] hover:bg-red-600 hover:text-white transition-all duration-500">
+                    Inizia il Protocollo
+                </button>
+            </Link>
+        </div>
       </section>
-
     </main>
   );
 }

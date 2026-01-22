@@ -2,161 +2,210 @@
 import React from 'react';
 import Navbar from "@/components/Navbar";
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Zap, TrendingUp, Code2, Layers } from "lucide-react";
+import { ArrowLeft, Database, Zap, Layout, Monitor, BarChart3, Workflow, Shield, Server, Box, Code2 } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
-// === DATABASE PROGETTI ===
-// Qui inserisci i dati dei tuoi progetti. 
-// L'importante è che lo 'slug' (l'id testuale) corrisponda al link.
 const projectsData = [
   {
-    slug: "e-learning", // Corrisponde a /progetti/e-learning
-    title: "E-Learning Platform Scale",
-    subtitle: "Migrazione LMS & Automazione",
-    client: "Academy Finanziaria",
-    stack: ["Next.js", "Stripe", "Mux Video", "n8n"],
-    coverImage: "/red.png", // La foto grande in alto
+    slug: "inglese-divertente",
+    title: "ECOSISTEMA TRIPWIRE AD ALTO VOLUME & INFRASTRUTTURA SALES OPS",
+    subtitle: "Analisi Tecnica: Scalabilità a 200 lead/giorno con Architettura Ibrida",
+    tags: ["Ingegneria dei Funnel", "Automazione CRM", "Analisi Dati"],
     stats: [
-        { label: "Risparmio Commissioni", value: "10%" },
-        { label: "Velocità Caricamento", value: "0.4s" },
-        { label: "Nuovi Studenti", value: "+1.2k" }
+        { label: "Lead / Giorno", value: "200+", color: "text-white" },
+        { label: "Fatturato", value: "60.000€", color: "text-red-600" },
+        { label: "ROAS Stabile", value: "14x", color: "text-white" }
     ],
-    challenge: "Il cliente utilizzava Teachable ma perdeva il 10% su ogni vendita e non aveva controllo sui dati degli studenti. La piattaforma era lenta e non permetteva upsell personalizzati.",
-    solution: "Abbiamo costruito una piattaforma proprietaria su Next.js. I video sono ospitati su Mux per streaming istantaneo. Il checkout è gestito via Stripe API, eliminando le fee della piattaforma terza.",
-    gallery: ["/rap.png", "/red.png"] // Le foto del progetto
+    scenario: "Il progetto per 'Inglese Divertente' presentava una sfida tecnica e logistica notevole. L'azienda investiva un budget importante (€600/day) per generare oltre 200 lead giornalieri su traffico freddo. L'obiettivo era alimentare un funnel ibrido complesso: vendita front-end di un Tripwire propedeutico all'upsell telefonico High-Ticket. Con questi volumi, serviva un'architettura capace di reggere il carico e mettere ordine tra marketing e vendite.",
+    phases: [
+        { num: "01", title: "Acquisizione Ibrida & CRO", desc: "Checkout a 2 Step Custom su WordPress per catturare i dati prima del pagamento. Recupero carrelli al 15%." },
+        { num: "02", title: "Routing Intelligente CRM", desc: "Middleware Zapier per smistamento lead in tempo reale su ActiveCampaign in base al comportamento d'acquisto." },
+        { num: "03", title: "Sales Intelligence", desc: "Dashboard Google Sheets via API per monitoraggio VPL e ROAS reale incrociando dati Ads e vendite telefoniche." },
+        { num: "04", title: "Delivery Automatica", desc: "Integrazione Kajabi/Teachable: accesso ai contenuti in meno di 30 secondi dal pagamento." }
+    ],
+    results: "L'ecosistema ha gestito picchi massivi senza downtime, generando 60.000€ di fatturato con ROAS 14x e portando ordine totale nel team vendita.",
+    imageLp: "/red.png",
+    imageDash: "/kpi.png",
+    stack: ["WordPress", "FunnelKit", "ActiveCampaign", "Zapier", "Kajabi"]
   },
   {
-    slug: "funnel-system",
-    title: "High-Ticket Funnel System",
-    subtitle: "Ecosistema di Vendita",
-    client: "Consulting Firm",
-    stack: ["ClickFunnels 2.0", "ActiveCampaign", "Zapier"],
-    coverImage: "/rap.png",
+    slug: "digital-shipping-revolution",
+    title: "DEEP-FUNNEL B2B ARCHITECTURE & MULTI-WEBHOOK ORCHESTRATION",
+    subtitle: "Ingegneria Transazionale: Liquidare i costi Ads con One-Click Upsells",
+    tags: ["B2B Strategy", "Deep-Funnel Logic", "Webhook Architecture"],
     stats: [
-        { label: "ROAS", value: "4.5x" },
-        { label: "Lead Qualificati", value: "+40%" },
-        { label: "Tasso Apertura Email", value: "65%" }
+        { label: "Ad Spend / Day", value: "1.000€", color: "text-white" },
+        { label: "ROAS Frontend", value: "2.3x", color: "text-red-600" },
+        { label: "Offerta Core", value: "4.000€", color: "text-white" }
     ],
-    challenge: "I lead arrivavano disorganizzati da Facebook Ads. Il team vendita perdeva tempo a chiamare contatti freddi o non qualificati.",
-    solution: "Implementazione di un quiz di pre-qualifica. Sincronizzazione in tempo reale con il CRM. Solo i lead con budget alto vengono inviati al calendario dei venditori.",
-    gallery: ["/red.png", "/rap.png"]
+    scenario: "Digital Shipping Revolution aveva bisogno di un sistema per acquisire clienti per la loro offerta Core da 4.000€, liquidando i costi pubblicitari (€1.000/day) già nel frontend. La sfida era costruire un funnel 'Self-Liquidating' con molteplici punti di conversione (Order Bump, Upsell 1, Upsell 2) che funzionasse come un orologio svizzero, sincronizzando pagamenti e pipeline in tempo reale.",
+    phases: [
+        { num: "01", title: "High-Performance GHL Stack", desc: "Personalizzazione CSS totale di GoHighLevel per trasmettere autorità B2B. Implementata Sticky CTA e Pop-up Data Capture (+18% conversion)." },
+        { num: "02", title: "Deep-Funnel Logic (Stripe)", desc: "Flusso One-Click Upsell (OTO) da 147€ e 199€. L'utente acquista prodotti aggiuntivi con un solo click senza reinserire i dati della carta." },
+        { num: "03", title: "Multi-Webhook Orchestration", desc: "Architettura di webhook incrociati via Zapier. Il sistema 'ascolta' Stripe e sblocca istantaneamente su Kajabi i corsi corrispondenti." },
+        { num: "04", title: "Pipeline Injection", desc: "Iniezione automatica del lead nella Pipeline corretta su GHL in base allo spending. Il team commerciale riceve schede clienti arricchite e pre-qualificate." }
+    ],
+    results: "ROAS Frontend di 2.3: il funnel copre interamente i costi pubblicitari. Zero-Touch Delivery su migliaia di transazioni e pipeline commerciale saturata di lead caldi.",
+    imageLp: "/red.png",
+    imageDash: "/kpi.png",
+    stack: ["GoHighLevel", "Stripe API", "Zapier", "Kajabi", "Sheets API"]
+  },
+  {
+    slug: "misterbox",
+    title: "GAMIFIED COMMERCE ARCHITECTURE & FULL-STACK DEVELOPMENT",
+    subtitle: "Enterprise Stack: Piattaforma Mystery Box con NestJS & Next.js",
+    tags: ["Software Engineering", "Secure RNG", "Headless CMS"],
+    stats: [
+        { label: "Performance", value: "<1s", color: "text-white" },
+        { label: "Security", value: "100%", color: "text-red-600" },
+        { label: "Architecture", value: "Modular", color: "text-white" }
+    ],
+    scenario: "Il cliente richiedeva una piattaforma di 'Mystery Box' ad alto traffico. La sfida non era solo estetica, ma strutturale: garantire la sicurezza delle transazioni (crediti reali), la fluidità delle animazioni (Gamification) e la gestione scalabile dei prodotti. Serviva un'architettura a microservizi capace di gestire la logica di estrazione (RNG) in modo sicuro nel backend, prevenendo qualsiasi tentativo di manomissione.",
+    phases: [
+        { num: "01", title: "Frontend Reattivo (Next.js 14 + GSAP)", desc: "Sviluppo client-side in TypeScript per massima robustezza. Animazioni della 'Roulette' a 60fps gestite con GSAP. React Query per sincronizzazione saldo e inventory senza refresh." },
+        { num: "02", title: "Core Logic & Security (NestJS + Prisma)", desc: "Backend Enterprise in NestJS. Logica RNG (estrazione) protetta lato server. Gestione transazioni ACID con Prisma ORM e PostgreSQL. Auth sicura via JWT/Passport." },
+        { num: "03", title: "Content Management (Strapi Headless)", desc: "Implementato Strapi per dare autonomia al cliente: gestione Box, impostazione Drop Rates e inventario prodotti in tempo reale tramite API." },
+        { num: "04", title: "Infrastructure & Scalability", desc: "Architettura containerizzata con Docker e deployment su AWS. Storage asset su S3 per garantire caricamenti istantanei della libreria premi." }
+    ],
+    results: "Tempi di caricamento fulminei grazie all'SSR di Next.js. Architettura modulare pronta per feature future (Marketplace). Zero incidenti di sicurezza o exploit sulle probabilità di vincita.",
+    imageLp: "/red.png", // Screenshot Roulette UI
+    imageDash: "/kpi.png", // Screenshot Strapi o Code Snippet
+    stack: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Strapi", "Docker", "GSAP"]
   }
 ];
 
 export default function ProjectDetail({ params }) {
-  // 1. Troviamo il progetto giusto in base all'URL (slug)
   const project = projectsData.find(p => p.slug === params.slug);
 
-  // Se il progetto non esiste (utente ha scritto un link a caso)
-  if (!project) {
-    return (
-      <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold text-red-600 mb-4">404</h1>
-        <p className="mb-8">Progetto non trovato.</p>
-        <Link href="/progetti" className="underline">Torna ai progetti</Link>
-      </main>
-    );
-  }
+  if (!project) return <div className="bg-black h-screen text-white flex items-center justify-center font-mono text-xs uppercase tracking-widest">Errore: Progetto non trovato</div>;
 
   return (
-    <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
+    <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 overflow-x-hidden">
       <Navbar />
 
-      {/* ================= HERO DEL PROGETTO ================= */}
-      <section className="relative pt-40 pb-20 px-6 border-b border-zinc-900 overflow-hidden">
-        {/* Sfondo sfocato decorativo */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-            <Link href="/progetti" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white mb-8 transition text-sm uppercase tracking-widest">
-                <ArrowLeft className="w-4 h-4" /> Torna al Portfolio
+      {/* HEADER */}
+      <header className="pt-48 pb-24 px-6 border-b border-zinc-900 bg-zinc-950/30">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <Link href="/progetti" className="inline-flex items-center gap-2 text-zinc-600 hover:text-red-600 mb-12 transition-all text-[10px] font-bold uppercase tracking-[0.5em]">
+              <ArrowLeft className="w-4 h-4" /> Torna ai Progetti
             </Link>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-                <div>
-                    <span className="text-red-600 font-bold uppercase tracking-widest text-xs mb-2 block">{project.subtitle}</span>
-                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-[0.9]">
-                        {project.title}
-                    </h1>
-                    <div className="flex flex-wrap gap-3 mt-6">
-                        {project.stack.map((tech, i) => (
-                            <span key={i} className="px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono text-zinc-400 bg-zinc-900/50">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-                
-                {/* Stats Grid */}
-                <div className="grid grid-cols-3 gap-4 border-t border-zinc-800 pt-8 lg:border-t-0 lg:pt-0">
-                    {project.stats.map((stat, i) => (
-                        <div key={i}>
-                            <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
-                            <p className="text-xs text-zinc-500 uppercase tracking-widest mt-1">{stat.label}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* ================= COVER IMAGE ================= */}
-      <section className="w-full h-[50vh] md:h-[70vh] relative bg-zinc-900">
-         <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover opacity-90" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-      </section>
-
-      {/* ================= THE CASE STUDY ================= */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
-            {/* Left: Challenge */}
-            <div className="lg:col-span-5">
-                <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-red-600/10 rounded-lg text-red-600"><TrendingUp className="w-6 h-6"/></div>
-                    <h3 className="text-2xl font-bold text-white">The Challenge</h3>
-                </div>
-                <p className="text-zinc-400 leading-relaxed text-lg">
-                    {project.challenge}
-                </p>
+            <div className="flex flex-wrap gap-4 mb-8">
+               {project.tags.map((tag, i) => (
+                 <span key={i} className="text-[10px] font-mono text-red-600 border border-red-600/30 px-3 py-1 rounded-full bg-red-600/5">{tag}</span>
+               ))}
             </div>
 
-            {/* Right: Solution */}
-            <div className="lg:col-span-7">
-                <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-green-500/10 rounded-lg text-green-500"><Zap className="w-6 h-6"/></div>
-                    <h3 className="text-2xl font-bold text-white">The Technical Solution</h3>
-                </div>
-                <p className="text-zinc-300 leading-relaxed text-lg border-l-2 border-zinc-800 pl-6">
-                    {project.solution}
-                </p>
-                
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                     <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-zinc-500" />
-                        <span className="text-sm text-zinc-300">Architettura Scalabile</span>
-                     </div>
-                     <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-zinc-500" />
-                        <span className="text-sm text-zinc-300">Ottimizzazione Mobile</span>
-                     </div>
-                </div>
-            </div>
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.85] text-white max-w-5xl">
+              {project.title}
+            </h1>
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-zinc-900 pt-12 text-center md:text-left">
+                {project.stats.map((stat, i) => (
+                    <div key={i} className="space-y-2">
+                        <p className={`text-5xl font-black ${stat.color}`}>{stat.value}</p>
+                        <p className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-bold">{stat.label}</p>
+                    </div>
+                ))}
+            </div>
+          </Reveal>
+        </div>
+      </header>
+
+      {/* CONTENUTO */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          
+          <div className="lg:col-span-7 space-y-32">
+            <Reveal>
+                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-10 flex items-center gap-4">
+                   <span className="w-8 h-[1px] bg-red-600"></span> 01. Lo Scenario
+                </h3>
+                <p className="text-zinc-200 text-xl md:text-2xl font-light leading-relaxed">{project.scenario}</p>
+            </Reveal>
+
+            <Reveal>
+                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-16 flex items-center gap-4">
+                   <span className="w-8 h-[1px] bg-red-600"></span> 02. La Soluzione
+                </h3>
+                <div className="space-y-20 relative">
+                  <div className="absolute left-[19px] top-0 bottom-0 w-[1px] bg-zinc-900"></div>
+                  {project.phases.map((phase, i) => (
+                    <div key={i} className="relative pl-16 group">
+                      <div className="absolute left-0 top-0 w-10 h-10 bg-black border border-zinc-800 rounded-full flex items-center justify-center font-mono text-xs text-zinc-500 group-hover:border-red-600 group-hover:text-red-600 transition duration-500">{phase.num}</div>
+                      <h4 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">{phase.title}</h4>
+                      <p className="text-zinc-400 leading-relaxed text-lg font-light">{phase.desc}</p>
+                    </div>
+                  ))}
+                </div>
+            </Reveal>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group">
+               <Reveal>
+                <h3 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-8">03. I Risultati</h3>
+                <p className="text-white text-xl leading-relaxed relative z-10 font-light italic">"{project.results}"</p>
+               </Reveal>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-32 space-y-12">
+              <Reveal delay={0.3}>
+                <div className="group">
+                  <div className="mb-4 flex items-center justify-between text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
+                    <span className="flex items-center gap-2"><Layout className="w-3 h-3"/> {project.slug === 'misterbox' ? 'UI Roulette' : 'Layout Funnel'}</span>
+                  </div>
+                  <div className="aspect-square overflow-hidden border border-zinc-800 bg-zinc-900 rounded-2xl relative">
+                    <img src={project.imageLp} alt="Visual" className="w-full h-full object-cover opacity-80" />
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.5}>
+                <div className="group">
+                  <div className="mb-4 flex items-center justify-between text-[10px] font-mono text-red-600 uppercase font-bold tracking-widest">
+                    <span className="flex items-center gap-2"><Monitor className="w-3 h-3"/> {project.slug === 'misterbox' ? 'Strapi / Code' : 'Dashboard Desktop'}</span>
+                  </div>
+                  <div className="aspect-square flex flex-col border border-red-600/30 bg-zinc-950 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.1)]">
+                    <div className="h-8 bg-zinc-900 flex items-center px-4 gap-1.5 border-b border-zinc-800">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+                    </div>
+                    <div className="flex-1 overflow-hidden relative">
+                        {/* Se è Misterbox, mostriamo lo screenshot tecnico della dashboard o codice */}
+                        <img src={project.imageDash} alt="Technical" className="w-full h-full object-cover opacity-90" />
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              <div className="p-8 bg-zinc-950 border border-zinc-900 rounded-2xl">
+                    <p className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8 font-bold">Stack Tecnologico</p>
+                    <div className="grid grid-cols-2 gap-y-6 gap-x-4">
+                       {project.stack.map((s, i) => (
+                         <div key={i} className="flex items-center gap-3">
+                           <Zap className="w-3 h-3 text-red-600" />
+                           <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-tighter">{s}</span>
+                         </div>
+                       ))}
+                    </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ================= GALLERY ================= */}
-      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-900">
-         <h3 className="text-center text-zinc-500 text-xs uppercase tracking-[0.3em] mb-12">Project Gallery</h3>
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {project.gallery.map((img, i) => (
-                <div key={i} className="rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 aspect-video group">
-                    <img src={img} alt="Gallery" className="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
-                </div>
-            ))}
-         </div>
+      {/* CTA FINALE */}
+      <section className="py-32 px-6 border-t border-zinc-900 bg-black text-center relative overflow-hidden">
+        <Reveal>
+            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-10 leading-tight">Sviluppiamo il tuo <br /> prossimo asset?</h2>
+            <Link href="/#contact" className="inline-flex items-center gap-6 px-12 py-6 bg-red-600 text-white font-bold rounded-full uppercase text-xs tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500 group">
+                Inizia il Protocollo <Zap className="w-4 h-4 fill-current group-hover:animate-bounce" />
+            </Link>
+        </Reveal>
       </section>
-
     </main>
   );
 }
