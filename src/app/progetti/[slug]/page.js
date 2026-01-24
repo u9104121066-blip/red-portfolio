@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 const projectsData = [
   {
     slug: "inglese-divertente",
-    title: "ECOSISTEMA TRIPWIRE AD ALTO VOLUME & INFRASTRUTTURA SALES OPS",
+    title: "ECOSISTEMA TRIPWIRE AD ALTA SCALABILITÀ",
     subtitle: "Analisi Tecnica: Scalabilità a 200 lead/giorno con Architettura Ibrida",
     tags: ["Ingegneria dei Funnel", "Automazione CRM", "Analisi Dati"],
     stats: [
@@ -24,13 +24,13 @@ const projectsData = [
         { num: "04", title: "Delivery Automatica", desc: "Integrazione Kajabi/Teachable: accesso ai contenuti in meno di 30 secondi dal pagamento." }
     ],
     results: "L'ecosistema ha gestito picchi massivi senza downtime, generando 60.000€ di fatturato con ROAS 14x e portando ordine totale nel team vendita.",
-    imageLp: "/red.png",
+    imageLp: "/inglese.webp",
     imageDash: "/kpi.png",
     stack: ["WordPress", "FunnelKit", "ActiveCampaign", "Zapier", "Kajabi"]
   },
   {
     slug: "digital-shipping-revolution",
-    title: "DEEP-FUNNEL B2B ARCHITECTURE & MULTI-WEBHOOK ORCHESTRATION",
+    title: "ARCHITETTURA B2B A MASSIMIZZAZIONE PROFONDA",
     subtitle: "Ingegneria Transazionale: Liquidare i costi Ads con One-Click Upsells",
     tags: ["B2B Strategy", "Deep-Funnel Logic", "Webhook Architecture"],
     stats: [
@@ -46,13 +46,13 @@ const projectsData = [
         { num: "04", title: "Pipeline Injection", desc: "Iniezione automatica del lead nella Pipeline corretta su GHL in base allo spending. Il team commerciale riceve schede clienti arricchite e pre-qualificate." }
     ],
     results: "ROAS Frontend di 2.3: il funnel copre interamente i costi pubblicitari. Zero-Touch Delivery su migliaia di transazioni e pipeline commerciale saturata di lead caldi.",
-    imageLp: "/red.png",
-    imageDash: "/kpi.png",
+    imageLp: "/digital1.png",
+    imageDash: "/digital2.png",
     stack: ["GoHighLevel", "Stripe API", "Zapier", "Kajabi", "Sheets API"]
   },
   {
     slug: "misterbox",
-    title: "GAMIFIED COMMERCE ARCHITECTURE & FULL-STACK DEVELOPMENT",
+    title: "PIATTAFORMA COMMERCE GAMIFICATA & ALGORITMICA",
     subtitle: "Enterprise Stack: Piattaforma Mystery Box con NestJS & Next.js",
     tags: ["Software Engineering", "Secure RNG", "Headless CMS"],
     stats: [
@@ -68,8 +68,8 @@ const projectsData = [
         { num: "04", title: "Infrastructure & Scalability", desc: "Architettura containerizzata con Docker e deployment su AWS. Storage asset su S3 per garantire caricamenti istantanei della libreria premi." }
     ],
     results: "Tempi di caricamento fulminei grazie all'SSR di Next.js. Architettura modulare pronta per feature future (Marketplace). Zero incidenti di sicurezza o exploit sulle probabilità di vincita.",
-    imageLp: "/red.png", // Screenshot Roulette UI
-    imageDash: "/kpi.png", // Screenshot Strapi o Code Snippet
+    imageLp: "/mrbox1.png", // Screenshot Roulette UI
+    imageDash: "/mrbox3.png", // Screenshot Strapi o Code Snippet
     stack: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Strapi", "Docker", "GSAP"]
   }
 ];

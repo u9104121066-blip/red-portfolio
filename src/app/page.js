@@ -29,7 +29,7 @@ export default function Home() {
                  }}>
                 
                 <img 
-                    src="/red.png" 
+                    src="/Redrit.png" 
                     alt="Background" 
                     className="h-full w-full md:w-auto object-cover object-top opacity-80" 
                 />
@@ -47,12 +47,14 @@ export default function Home() {
              text-5xl: Dimensione per Mobile (iPhone)
              md:text-8xl: Dimensione per Desktop (PC)
           */}
+          <Reveal>
           <h1 className="text-5xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4 leading-[0.9] drop-shadow-2xl">
             RED WEB<br />
             STUDIO
           </h1>
-
+          </Reveal>
           {/* SOTTOTITOLO */}
+          <Reveal delay={0.4}>
           <div className="flex items-center justify-center gap-2 md:gap-4 mt-4 md:mt-8 opacity-90">
              <div className="h-[2px] w-4 md:w-16 bg-red-600"></div>
              {/* Testo più piccolo su mobile (text-[10px]) per evitare che vada a capo male */}
@@ -61,12 +63,15 @@ export default function Home() {
              </p>
              <div className="h-[2px] w-4 md:w-16 bg-red-600"></div>
           </div>
+          </Reveal>
           
           {/* DESCRIZIONE */}
           {/* Su mobile la nascondiamo o la accorciamo se vuoi, qui l'ho lasciata ma con font più piccolo */}
+          <Reveal delay={0.6}>
           <p className="text-zinc-500 text-xs md:text-sm max-w-xs md:max-w-lg mx-auto mt-4 md:mt-6 leading-relaxed font-light">
              Progetto ecosistemi digitali che non si limitano a convertire, ma massimizzano il valore di ogni singolo lead grazie a tracciamenti e flussi automatizzati..
           </p>
+          </Reveal>
         </div>
       </section>
       
@@ -88,8 +93,9 @@ export default function Home() {
                     <div className="w-12 h-12 bg-red-600/10 rounded-full flex items-center justify-center mb-4 text-red-600 border border-red-600/20">
                         <Zap className="w-6 h-6" />
                     </div>
+                    <Reveal delay={0.2}>
                     <h3 className="text-6xl font-bold text-white mb-2">7+</h3>
-                    <p className="text-lg text-zinc-400 font-medium">Anni di esperienza</p>
+                    <p className="text-lg text-zinc-400 font-medium">Anni di esperienza</p></Reveal>
                     <p className="text-xs text-zinc-600 uppercase tracking-widest mt-1">Lanci High-Ticket</p>
                 </div>
 
@@ -114,6 +120,7 @@ export default function Home() {
 
           {/* RIGHT: TEXT */}
           <div className="lg:col-span-7">
+            <Reveal delay={0.4}>
             <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Chi sono</h6>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               IL PUNTO D'INCONTRO TRA  <br /> CODICE E <span className="text-red-600">MARKETING.</span>
@@ -130,6 +137,7 @@ export default function Home() {
             <button className="px-8 py-4 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition flex items-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)]">
                 Scopri il mio Metodo <ArrowRight className="w-4 h-4" />
             </button>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -138,9 +146,10 @@ export default function Home() {
       {/* ================= TECH STACK (GRID LAYOUT) ================= */}
       {/* Qui abbiamo trasformato il testo semplice in una griglia bordata elegante */}
       <section className="py-20 bg-zinc-950 border-y border-zinc-900">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-10">
-                <p className="text-zinc-500 text-xs uppercase tracking-[0.3em]">my tech arsenal</p>
+                <p className="text-zinc-500 text-xs uppercase tracking-[0.3em]">il mio arsenale tech</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-zinc-800">
@@ -161,6 +170,7 @@ export default function Home() {
                 ))}
             </div>
         </div>
+        </Reveal>
       </section>
 
 
@@ -282,8 +292,8 @@ export default function Home() {
             <Reveal>
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div>
-                        <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Selected Works</h6>
-                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">Featured Projects</h2>
+                        <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Lavori Selezionati</h6>
+                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">Progetti</h2>
                     </div>
                     <Link href="/progetti" className="hidden md:flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest border-b border-zinc-800 pb-1 hover:text-red-600 hover:border-red-600 transition-all duration-300">
                         Vedi Tutti i Progetti <ArrowRight className="w-4 h-4"/>
@@ -299,7 +309,7 @@ export default function Home() {
                         <Link href="/progetti/inglese-divertente">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
                                 <img 
-                                    src="/red.png" 
+                                    src="/inglese.webp" 
                                     alt="Inglese Divertente" 
                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
                                 />
@@ -307,7 +317,7 @@ export default function Home() {
                             </div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">High-Volume Tripwire Ecosystem</h3>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Ecosistema Tripwire ad Alta Scalabilità</h3>
                                     <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">WordPress • CRM Automation • Sales Ops</p>
                                 </div>
                                 <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
@@ -324,7 +334,7 @@ export default function Home() {
                         <Link href="/progetti/digital-shipping-revolution">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
                                 <img 
-                                    src="/rap.png" 
+                                    src="/digital1.png" 
                                     alt="Digital Shipping" 
                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
                                 />
@@ -332,7 +342,7 @@ export default function Home() {
                             </div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Deep-Funnel B2B Architecture</h3>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Architettura B2B a Massimizzazione Profonda</h3>
                                     <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">GoHighLevel • Stripe API • Webhooks</p>
                                 </div>
                                 <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
@@ -349,15 +359,15 @@ export default function Home() {
                         <Link href="/progetti/misterbox">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-6">
                                 <img 
-                                    src="/red.png" 
+                                    src="/mrbox1.png" 
                                     alt="Misterbox" 
-                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                                    className="w-full h-full object-cover object-[center_35%] opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                             </div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Gamified Commerce Architecture</h3>
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-600 transition">Piattaforma Commerce Gamificata & Algoritmica</h3>
                                     <p className="text-zinc-500 mt-2 text-xs font-mono uppercase tracking-widest">Next.js 14 • NestJS • Prisma • Docker</p>
                                 </div>
                                 <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
@@ -385,8 +395,8 @@ export default function Home() {
 
         <div className="max-w-xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Let's Scale Your Infrastructure</h2>
-            <p className="text-zinc-400">Compila il modulo per un'analisi tecnica.</p>
+            <h2 className="text-4xl font-bold text-white mb-4">SCALIAMO LA TUA INFRASTRUTTURA</h2>
+            <p className="text-zinc-400">Compila il modulo per richiedere un'analisi tecnica del tuo progetto.</p>
           </div>
 
           <div className="bg-zinc-950 border border-zinc-800 p-2 rounded-3xl shadow-2xl">
@@ -396,10 +406,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-8 border-t border-zinc-900 text-center bg-black">
-        <p className="text-zinc-600 text-xs uppercase tracking-widest">&copy; {new Date().getFullYear()} Red Web Studio. Engineered for Performance.</p>
-      </footer>
+
+      
     </main>
   );
 }

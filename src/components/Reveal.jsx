@@ -1,9 +1,8 @@
 "use client";
-
 import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
-export const Reveal = ({ children, width = "100%", delay = 0.25 }) => {
+export const Reveal = ({ children, delay = 0.2 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const mainControls = useAnimation();
@@ -15,7 +14,7 @@ export const Reveal = ({ children, width = "100%", delay = 0.25 }) => {
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    <div ref={ref} className="relative w-full overflow-hidden">
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 75 },
@@ -23,7 +22,7 @@ export const Reveal = ({ children, width = "100%", delay = 0.25 }) => {
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: delay }}
+        transition={{ duration: 0.5, delay: delay, ease: "easeOut" }}
       >
         {children}
       </motion.div>

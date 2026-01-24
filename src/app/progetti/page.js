@@ -8,29 +8,29 @@ export default function Progetti() {
   const projects = [
     {
         id: 1,
-        title: "HIGH-VOLUME TRIPWIRE ECOSYSTEM",
+        title: "ECOSISTEMA TRIPWIRE AD ALTA SCALABILITÀ",
         category: "Funnel Engineering / Sales Ops",
         tech: "WordPress, FunnelKit, ActiveCampaign, Zapier",
-        description: "Infrastruttura ibrida progettata per gestire oltre 200 lead/giorno con tracciamento del ROI in tempo reale.",
-        image: "/red.png", 
+        description: "Sales Intelligence che converte il volume in precisione. Un'architettura che segmenta i flussi comportamentali in tempo reale, alimentando il reparto commerciale con metriche predittive per massimizzare la chiusura dei contratti.",
+        image: "/inglese.webp", 
         link: "/progetti/inglese-divertente" 
     },
     {
         id: 2,
-        title: "DEEP-FUNNEL B2B ARCHITECTURE",
+        title: "ARCHITETTURA B2B A MASSIMIZZAZIONE PROFONDA",
         category: "B2B Strategy / Automation",
         tech: "GoHighLevel, Stripe API, Zapier, Kajabi",
-        description: "Sistema 'Self-Liquidating' con One-Click Upsells e orchestrazione webhook per liquidare i costi pubblicitari.",
-        image: "/rap.png", 
+        description: "Revenue Engineering per abbattere il CAC. Un sistema 'Deep-Funnel' dove pagamenti multipli e webhook complessi si sincronizzano invisibilmente, trasformando l'acquisizione B2B in profitto netto immediato.",
+        image: "/digital1.png", 
         link: "/progetti/digital-shipping-revolution" 
     },
     {
         id: 3,
-        title: "GAMIFIED COMMERCE ARCHITECTURE",
+        title: "PIATTAFORMA COMMERCE GAMIFICATA & ALGORITMICA",
         category: "Software Engineering / Full-Stack",
         tech: "Next.js 14, NestJS, Prisma, PostgreSQL, Docker",
-        description: "Piattaforma Mystery Box complessa con logica RNG sicura lato server e animazioni GSAP ad alta frequenza.",
-        image: "/red.png", 
+        description: "Un motore algoritmico dove nulla è lasciato al caso. Il cliente controlla la matematica della fortuna dal backend, mentre l'utente vive un'esperienza fluida e ipnotica, protetta da livelli di sicurezza enterprise.",
+        image: "/mrbox1.png", 
         link: "/progetti/misterbox" 
     }
   ];
@@ -46,7 +46,7 @@ export default function Progetti() {
             <h6 className="text-red-600 font-bold uppercase tracking-[0.5em] text-[10px] mb-6">Portfolio Selezionato</h6>
             <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-8">
                 ARCHITETTURE <br />
-                <span className="text-zinc-800">PER LO SCALING.</span>
+                <span className="text-zinc-500">PER LO SCALING.</span>
             </h1>
         </div>
       </section>

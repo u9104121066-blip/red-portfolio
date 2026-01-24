@@ -90,13 +90,13 @@ const Navbar = () => {
             <Link href="#contact">
                 <button className="group relative px-6 py-2.5 bg-white text-black font-bold text-xs uppercase tracking-widest overflow-hidden rounded-full hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(220,38,38,0.4)]">
                     <span className="relative z-10 flex items-center gap-2">
-                        Start Project <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                        Inizia il tuo progetto <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>
                     {/* Hover Effect Background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     {/* Text Change on Hover (Diventa bianco su sfondo rosso) */}
                     <div className="absolute inset-0 flex items-center justify-center gap-2 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
-                         Let's Talk <Zap className="w-3 h-3 fill-white" />
+                         Contatto<Zap className="w-3 h-3 fill-white" />
                     </div>
                 </button>
             </Link>

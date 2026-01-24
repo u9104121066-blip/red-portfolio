@@ -77,9 +77,9 @@ export default function ContactForm() {
       <div className="relative z-10 mb-10 border-b border-zinc-900 pb-6">
         <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Secure Connection</span>
+            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Connessione sicura</span>
         </div>
-        <h3 className="text-2xl md:text-3xl font-bold text-white">Start The Protocol</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-white"></h3>
       </div>
 
       <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
@@ -177,7 +177,7 @@ export default function ContactForm() {
                 </>
             ) : (
                 <>
-                    INITIALIZE PROJECT <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    Parliamo Del Progetto <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </>
             )}
         </button>
