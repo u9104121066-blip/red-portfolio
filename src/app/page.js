@@ -2,6 +2,7 @@
 
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
@@ -29,7 +30,7 @@ export default function Home() {
                  }}>
                 
                 <img 
-                    src="/Redrit.png" 
+                    src="/Redrit.webp" 
                     alt="Background" 
                     className="h-full w-full md:w-auto object-cover object-top opacity-80" 
                 />
@@ -47,14 +48,14 @@ export default function Home() {
              text-5xl: Dimensione per Mobile (iPhone)
              md:text-8xl: Dimensione per Desktop (PC)
           */}
-          <Reveal>
+          
           <h1 className="text-5xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4 leading-[0.9] drop-shadow-2xl">
             RED WEB<br />
             STUDIO
           </h1>
-          </Reveal>
+         
           {/* SOTTOTITOLO */}
-          <Reveal delay={0.4}>
+          
           <div className="flex items-center justify-center gap-2 md:gap-4 mt-4 md:mt-8 opacity-90">
              <div className="h-[2px] w-4 md:w-16 bg-red-600"></div>
              {/* Testo più piccolo su mobile (text-[10px]) per evitare che vada a capo male */}
@@ -62,16 +63,14 @@ export default function Home() {
                 Full Stack Developer & Funnel Architect
              </p>
              <div className="h-[2px] w-4 md:w-16 bg-red-600"></div>
-          </div>
-          </Reveal>
+          </div>      
           
           {/* DESCRIZIONE */}
           {/* Su mobile la nascondiamo o la accorciamo se vuoi, qui l'ho lasciata ma con font più piccolo */}
-          <Reveal delay={0.6}>
           <p className="text-zinc-500 text-xs md:text-sm max-w-xs md:max-w-lg mx-auto mt-4 md:mt-6 leading-relaxed font-light">
              Progetto ecosistemi digitali che non si limitano a convertire, ma massimizzano il valore di ogni singolo lead grazie a tracciamenti e flussi automatizzati..
           </p>
-          </Reveal>
+         
         </div>
       </section>
       
