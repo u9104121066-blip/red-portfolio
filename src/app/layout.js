@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Footer from "@/components/Footer"; // 1. IMPORTIAMO IL FOOTER
+import Footer from "@/components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +30,7 @@ export const metadata = {
     siteName: "Red Web Studio",
     images: [
       {
-        url: "/Redrit.webp", // La tua foto Hero come anteprima social
+        url: "/Redrit.webp",
         width: 1200,
         height: 630,
         alt: "Red Web Studio - Radouane Chefaoui",
@@ -48,15 +48,47 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // CONFIGURAZIONE DATI STRUTTURATI (KNOWLEDGE PANEL)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Red Web Studio",
+    "alternateName": "Radouane Chefaoui",
+    "description": "Ingegneria dei Funnel e Sviluppo Web Full Stack per lanci High-Ticket.",
+    "url": "https://redwebstudio.it",
+    "image": "https://redwebstudio.it/Redrit.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rende",
+      "addressRegion": "CS",
+      "postalCode": "87036",
+      "addressCountry": "IT"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Radouane Chefaoui"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/red-web-studio-013459238/",
+      "https://www.instagram.com/redwebstudiomarketing/"
+    ]
+  };
+
   return (
     <html lang="it"> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
-        {/* Qui viene renderizzato il contenuto della pagina (Home, Chi siamo, ecc) */}
+        {/* INIEZIONE SCHEMA MARKUP PER GOOGLE */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        {/* CONTENUTO DELLE PAGINE */}
         {children}
 
-        {/* 3. ECCO IL FOOTER (Apparirà in fondo a tutte le pagine) */}
+        {/* FOOTER GLOBALE */}
         <Footer />
         
       </body>
