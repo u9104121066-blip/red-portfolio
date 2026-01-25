@@ -73,7 +73,25 @@ const projectsData = [
     stack: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Strapi", "Docker", "GSAP"]
   }
 ];
+export async function generateMetadata({ params }) {
+  // Cerchiamo il progetto nel database
+  const project = projectsData.find(p => p.slug === params.slug);
+  
+  if (!project) {
+    return { title: "Progetto non trovato" };
+  }
 
+  // Costruiamo il titolo SEO italianizzato
+  return {
+    title: `Caso Studio: ${project.title}`,
+    description: `Analisi tecnica dell'architettura sviluppata per ${project.slug.replace(/-/g, ' ')}. Focus su ${project.tags.join(', ')}.`,
+    openGraph: {
+      title: `Caso Studio: ${project.title} | Red Web Studio`,
+      description: project.subtitle,
+      images: [project.imageLp], // Usa l'immagine del progetto per la condivisione
+    },
+  };
+}
 export default function ProjectDetail({ params }) {
   const project = projectsData.find(p => p.slug === params.slug);
 
