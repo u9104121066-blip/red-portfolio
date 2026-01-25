@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from "@/components/Navbar";
 import Link from 'next/link';
-import { ArrowLeft, Database, Zap, Layout, Monitor, BarChart3, Workflow, Shield, Server, Box, Code2 } from "lucide-react";
+import { ArrowLeft, Layout, Monitor, Zap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const projectsData = [
@@ -13,8 +13,8 @@ const projectsData = [
     tags: ["Ingegneria dei Funnel", "Automazione CRM", "Analisi Dati"],
     stats: [
         { label: "Lead / Giorno", value: "200+", color: "text-white" },
-        { label: "Fatturato", value: "60.000€", color: "text-red-600" },
-        { label: "ROAS Stabile", value: "14x", color: "text-white" }
+        { label: "Fatturato", value: "60k", color: "text-red-600" }, // Accorciato per stare in riga
+        { label: "ROAS", value: "14x", color: "text-white" }
     ],
     scenario: "Il progetto per 'Inglese Divertente' presentava una sfida tecnica e logistica notevole. L'azienda investiva un budget importante (€600/day) per generare oltre 200 lead giornalieri su traffico freddo. L'obiettivo era alimentare un funnel ibrido complesso: vendita front-end di un Tripwire propedeutico all'upsell telefonico High-Ticket. Con questi volumi, serviva un'architettura capace di reggere il carico e mettere ordine tra marketing e vendite.",
     phases: [
@@ -34,9 +34,9 @@ const projectsData = [
     subtitle: "Ingegneria Transazionale: Liquidare i costi Ads con One-Click Upsells",
     tags: ["B2B Strategy", "Deep-Funnel Logic", "Webhook Architecture"],
     stats: [
-        { label: "Ad Spend / Day", value: "1.000€", color: "text-white" },
-        { label: "ROAS Frontend", value: "2.3x", color: "text-red-600" },
-        { label: "Offerta Core", value: "4.000€", color: "text-white" }
+        { label: "Ad Spend", value: "1k", color: "text-white" },
+        { label: "ROAS FE", value: "2.3x", color: "text-red-600" },
+        { label: "Core Offer", value: "4k", color: "text-white" }
     ],
     scenario: "Digital Shipping Revolution aveva bisogno di un sistema per acquisire clienti per la loro offerta Core da 4.000€, liquidando i costi pubblicitari (€1.000/day) già nel frontend. La sfida era costruire un funnel 'Self-Liquidating' con molteplici punti di conversione (Order Bump, Upsell 1, Upsell 2) che funzionasse come un orologio svizzero, sincronizzando pagamenti e pipeline in tempo reale.",
     phases: [
@@ -46,8 +46,8 @@ const projectsData = [
         { num: "04", title: "Pipeline Injection", desc: "Iniezione automatica del lead nella Pipeline corretta su GHL in base allo spending. Il team commerciale riceve schede clienti arricchite e pre-qualificate." }
     ],
     results: "ROAS Frontend di 2.3: il funnel copre interamente i costi pubblicitari. Zero-Touch Delivery su migliaia di transazioni e pipeline commerciale saturata di lead caldi.",
-    imageLp: "/digital1.png",
-    imageDash: "/digital2.png",
+    imageLp: "/digital1.webp",
+    imageDash: "/digital2.webp",
     stack: ["GoHighLevel", "Stripe API", "Zapier", "Kajabi", "Sheets API"]
   },
   {
@@ -56,7 +56,7 @@ const projectsData = [
     subtitle: "Enterprise Stack: Piattaforma Mystery Box con NestJS & Next.js",
     tags: ["Software Engineering", "Secure RNG", "Headless CMS"],
     stats: [
-        { label: "Performance", value: "<1s", color: "text-white" },
+        { label: "Speed", value: "<1s", color: "text-white" },
         { label: "Security", value: "100%", color: "text-red-600" },
         { label: "Architecture", value: "Modular", color: "text-white" }
     ],
@@ -68,8 +68,8 @@ const projectsData = [
         { num: "04", title: "Infrastructure & Scalability", desc: "Architettura containerizzata con Docker e deployment su AWS. Storage asset su S3 per garantire caricamenti istantanei della libreria premi." }
     ],
     results: "Tempi di caricamento fulminei grazie all'SSR di Next.js. Architettura modulare pronta per feature future (Marketplace). Zero incidenti di sicurezza o exploit sulle probabilità di vincita.",
-    imageLp: "/mrbox1.png", // Screenshot Roulette UI
-    imageDash: "/mrbox3.png", // Screenshot Strapi o Code Snippet
+    imageLp: "/mrbox1.webp",
+    imageDash: "/mrbox3.webp",
     stack: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Strapi", "Docker", "GSAP"]
   }
 ];
@@ -83,112 +83,148 @@ export default function ProjectDetail({ params }) {
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 overflow-x-hidden">
       <Navbar />
 
-      {/* HEADER */}
-      <header className="pt-48 pb-24 px-6 border-b border-zinc-900 bg-zinc-950/30">
+      {/* HEADER COMPATTO (Split Layout su Desktop) */}
+      {/* Reduced vertical padding: pt-32 pb-8 on desktop */}
+      <header className="pt-32 pb-12 md:pt-36 md:pb-12 px-6 border-b border-zinc-900 bg-zinc-950/30">
         <div className="max-w-7xl mx-auto">
           <Reveal>
-            <Link href="/progetti" className="inline-flex items-center gap-2 text-zinc-600 hover:text-red-600 mb-12 transition-all text-[10px] font-bold uppercase tracking-[0.5em]">
-              <ArrowLeft className="w-4 h-4" /> Torna ai Progetti
-            </Link>
-            
-            <div className="flex flex-wrap gap-4 mb-8">
-               {project.tags.map((tag, i) => (
-                 <span key={i} className="text-[10px] font-mono text-red-600 border border-red-600/30 px-3 py-1 rounded-full bg-red-600/5">{tag}</span>
-               ))}
+            {/* Top Bar: Back Link & Tags */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 md:mb-12">
+                <Link href="/progetti" className="inline-flex items-center gap-2 text-zinc-600 hover:text-red-600 transition-all text-[10px] font-bold uppercase tracking-[0.2em]">
+                    <ArrowLeft className="w-4 h-4" /> Torna ai Progetti
+                </Link>
+                
+                <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, i) => (
+                        <span key={i} className="text-[10px] font-mono text-zinc-400 border border-zinc-800 px-3 py-1 rounded-full">{tag}</span>
+                    ))}
+                </div>
             </div>
 
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.85] text-white max-w-5xl">
-              {project.title}
-            </h1>
+            {/* Main Header Content: 2 Colonne su Desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+                {/* Colonna SX: Titolo */}
+                <div className="md:col-span-8">
+                    {/* Text-5xl/6xl invece di 8xl. Molto più pulito. */}
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.95] text-white">
+                        {project.title}
+                    </h1>
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-zinc-900 pt-12 text-center md:text-left">
-                {project.stats.map((stat, i) => (
-                    <div key={i} className="space-y-2">
-                        <p className={`text-5xl font-black ${stat.color}`}>{stat.value}</p>
-                        <p className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-bold">{stat.label}</p>
+                {/* Colonna DX: Statistiche (Allineate a destra su Desktop) */}
+                <div className="md:col-span-4 md:text-right">
+                    <div className="flex flex-row md:justify-end gap-8 md:gap-12 border-t md:border-t-0 border-zinc-900 pt-8 md:pt-0">
+                        {project.stats.map((stat, i) => (
+                            <div key={i} className="space-y-1">
+                                <p className={`text-4xl font-black ${stat.color}`}>{stat.value}</p>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-bold">{stat.label}</p>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
+
           </Reveal>
         </div>
       </header>
 
-      {/* CONTENUTO */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      {/* CONTENUTO PRINCIPALE */}
+      <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
           
-          <div className="lg:col-span-7 space-y-32">
+          {/* COLONNA TESTO */}
+          {/* Reduced spacing: space-y-20 instead of 32 */}
+          <div className="lg:col-span-7 space-y-16 md:space-y-20">
+            
+            {/* Scenario */}
             <Reveal>
-                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-10 flex items-center gap-4">
+                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-4">
                    <span className="w-8 h-[1px] bg-red-600"></span> 01. Lo Scenario
                 </h3>
-                <p className="text-zinc-200 text-xl md:text-2xl font-light leading-relaxed">{project.scenario}</p>
+                <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed">{project.scenario}</p>
             </Reveal>
 
+            {/* Soluzione */}
             <Reveal>
-                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-16 flex items-center gap-4">
+                <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-10 flex items-center gap-4">
                    <span className="w-8 h-[1px] bg-red-600"></span> 02. La Soluzione
                 </h3>
-                <div className="space-y-20 relative">
+                
+                {/* Reduced space between phases */}
+                <div className="space-y-10 md:space-y-12 relative">
                   <div className="absolute left-[19px] top-0 bottom-0 w-[1px] bg-zinc-900"></div>
                   {project.phases.map((phase, i) => (
                     <div key={i} className="relative pl-16 group">
                       <div className="absolute left-0 top-0 w-10 h-10 bg-black border border-zinc-800 rounded-full flex items-center justify-center font-mono text-xs text-zinc-500 group-hover:border-red-600 group-hover:text-red-600 transition duration-500">{phase.num}</div>
-                      <h4 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">{phase.title}</h4>
-                      <p className="text-zinc-400 leading-relaxed text-lg font-light">{phase.desc}</p>
+                      <h4 className="text-lg md:text-lg font-bold text-white mb-2 uppercase tracking-tight">{phase.title}</h4>
+                      <p className="text-zinc-400 leading-relaxed text-base md:text-base font-light">{phase.desc}</p>
                     </div>
                   ))}
                 </div>
             </Reveal>
 
-            <div className="bg-zinc-900/30 border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group">
+            {/* Risultati Box */}
+            <div className="bg-zinc-900/30 border border-zinc-800 p-8 rounded-2xl relative overflow-hidden">
                <Reveal>
-                <h3 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-8">03. I Risultati</h3>
-                <p className="text-white text-xl leading-relaxed relative z-10 font-light italic">"{project.results}"</p>
+                <h3 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">03. I Risultati</h3>
+                <p className="text-white text-lg leading-relaxed relative z-10 font-light italic">"{project.results}"</p>
                </Reveal>
             </div>
           </div>
 
+          {/* COLONNA IMMAGINI (Sticky) */}
           <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-32 space-y-12">
+            <div className="lg:sticky lg:top-32 space-y-8">
+              
+              {/* Immagine 1 */}
               <Reveal delay={0.3}>
                 <div className="group">
-                  <div className="mb-4 flex items-center justify-between text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
-                    <span className="flex items-center gap-2"><Layout className="w-3 h-3"/> {project.slug === 'misterbox' ? 'UI Roulette' : 'Layout Funnel'}</span>
+                  <div className="mb-3 flex items-center justify-between text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
+                    <span className="flex items-center gap-2"><Layout className="w-3 h-3"/> Layout Funnel</span>
                   </div>
-                  <div className="aspect-square overflow-hidden border border-zinc-800 bg-zinc-900 rounded-2xl relative">
-                    <img src={project.imageLp} alt="Visual" className="w-full h-full object-cover opacity-80" />
+                  <div className="aspect-auto md:aspect-square overflow-hidden border border-zinc-800 bg-zinc-900 rounded-2xl relative">
+                    {/* Opacity Fix: 90% on desktop, 100% on mobile */}
+                    <img 
+                        src={project.imageLp} 
+                        alt="Visual" 
+                        className="w-full h-auto md:h-full md:object-cover opacity-100 md:opacity-90 md:hover:opacity-100 transition duration-700" 
+                    />
                   </div>
                 </div>
               </Reveal>
 
+              {/* Immagine 2 */}
               <Reveal delay={0.5}>
                 <div className="group">
-                  <div className="mb-4 flex items-center justify-between text-[10px] font-mono text-red-600 uppercase font-bold tracking-widest">
-                    <span className="flex items-center gap-2"><Monitor className="w-3 h-3"/> {project.slug === 'misterbox' ? 'Strapi / Code' : 'Dashboard Desktop'}</span>
+                  <div className="mb-3 flex items-center justify-between text-[10px] font-mono text-red-600 uppercase font-bold tracking-widest">
+                    <span className="flex items-center gap-2"><Monitor className="w-3 h-3"/> Dashboard / Tech</span>
                   </div>
-                  <div className="aspect-square flex flex-col border border-red-600/30 bg-zinc-950 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.1)]">
-                    <div className="h-8 bg-zinc-900 flex items-center px-4 gap-1.5 border-b border-zinc-800">
+                  <div className="aspect-auto md:aspect-square flex flex-col border border-red-600/20 bg-zinc-950 rounded-2xl overflow-hidden shadow-lg">
+                    <div className="h-8 bg-zinc-900 flex items-center px-4 gap-1.5 border-b border-zinc-800 shrink-0">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
                     </div>
                     <div className="flex-1 overflow-hidden relative">
-                        {/* Se è Misterbox, mostriamo lo screenshot tecnico della dashboard o codice */}
-                        <img src={project.imageDash} alt="Technical" className="w-full h-full object-cover opacity-90" />
+                         {/* Opacity Fix */}
+                        <img 
+                            src={project.imageDash} 
+                            alt="Technical" 
+                            className="w-full h-auto md:h-full md:object-cover opacity-100 md:opacity-90" 
+                        />
                     </div>
                   </div>
                 </div>
               </Reveal>
 
-              <div className="p-8 bg-zinc-950 border border-zinc-900 rounded-2xl">
-                    <p className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8 font-bold">Stack Tecnologico</p>
-                    <div className="grid grid-cols-2 gap-y-6 gap-x-4">
+              {/* Stack Tecnologico Compact */}
+              <div className="p-6 bg-zinc-950 border border-zinc-900 rounded-2xl">
+                    <p className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-4 font-bold">Tech Stack</p>
+                    <div className="flex flex-wrap gap-2">
                        {project.stack.map((s, i) => (
-                         <div key={i} className="flex items-center gap-3">
-                           <Zap className="w-3 h-3 text-red-600" />
-                           <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-tighter">{s}</span>
-                         </div>
+                         <span key={i} className="flex items-center gap-2 text-[10px] font-mono text-zinc-400 bg-black border border-zinc-800 px-2 py-1.5 rounded">
+                           <Zap className="w-3 h-3 text-red-600" /> {s}
+                         </span>
                        ))}
                     </div>
               </div>
@@ -197,11 +233,11 @@ export default function ProjectDetail({ params }) {
         </div>
       </section>
 
-      {/* CTA FINALE */}
-      <section className="py-32 px-6 border-t border-zinc-900 bg-black text-center relative overflow-hidden">
+      {/* CTA FINALE COMPATTA */}
+      <section className="py-20 px-6 border-t border-zinc-900 bg-black text-center relative overflow-hidden">
         <Reveal>
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-10 leading-tight">Sviluppiamo il tuo <br /> prossimo asset?</h2>
-            <Link href="/#contact" className="inline-flex items-center gap-6 px-12 py-6 bg-red-600 text-white font-bold rounded-full uppercase text-xs tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500 group">
+            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-8 leading-tight">Pronto a Scalare?</h2>
+            <Link href="/#contact" className="inline-flex items-center gap-4 px-10 py-5 bg-red-600 text-white font-bold rounded-full uppercase text-xs tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500 group">
                 Inizia il Protocollo <Zap className="w-4 h-4 fill-current group-hover:animate-bounce" />
             </Link>
         </Reveal>
