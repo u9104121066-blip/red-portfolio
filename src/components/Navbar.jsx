@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, Zap } from 'lucide-react';
+import { Menu, X, ArrowRight, Zap, Instagram, Linkedin, Mail } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname(); // Per sapere in che pagina siamo e illuminare il link giusto
+  const pathname = usePathname();
 
-  // Gestione Scroll per effetto vetro
+  // Gestione Scroll per cambiare l'aspetto della barra
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -18,7 +18,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Blocca lo scroll della pagina quando il menu mobile è aperto
+  // Blocca lo scroll del sito quando il menu è aperto
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -30,116 +30,119 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Chi Sono', href: '/chi-sono' },
-    { name: 'Servizi', href: '/#services' }, // Ancora nella home
+    { name: 'Servizi', href: '/#services' },
     { name: 'Progetti', href: '/progetti' },
   ];
 
   return (
     <>
+      {/* === TOP BAR (Logo + Desktop Menu + Toggle Button) === */}
       <nav 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${
-          scrolled 
-            ? 'bg-black/70 backdrop-blur-xl border-white/5 py-4' 
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
+          scrolled || isOpen
+            ? 'bg-black/80 backdrop-blur-md border-zinc-800 py-4' 
             : 'bg-transparent border-transparent py-6'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           
-          {/* === LOGO === */}
-          <Link href="/" className="relative group z-50">
-            <div className="flex items-center gap-1">
-                {/* Icona Logo Decorativa */}
-                <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-black rounded-lg flex items-center justify-center border border-red-500/30 group-hover:border-red-500 transition-all duration-300">
-                    <span className="font-bold text-white text-lg">R</span>
-                </div>
+          {/* LOGO */}
+          <Link href="/" className="relative group z-50" onClick={() => setIsOpen(false)}>
+            <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center font-bold text-white">R</div>
                 <div className="flex flex-col">
-                    <span className="text-xl font-black text-white tracking-tighter leading-none">
-                        RED<span className="text-red-600">.</span>
-                    </span>
-                    <span className="text-[8px] text-zinc-400 font-mono tracking-[0.2em] uppercase group-hover:text-white transition-colors">
-                        Studio
-                    </span>
+                    <span className="text-xl font-black text-white leading-none tracking-tighter">RED.</span>
+                    <span className="text-[9px] text-zinc-400 uppercase tracking-widest font-mono">Studio</span>
                 </div>
             </div>
-            {/* Glow effect dietro al logo */}
-            <div className="absolute inset-0 bg-red-600/20 blur-[20px] rounded-full opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
           </Link>
 
-          {/* === DESKTOP MENU === */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* DESKTOP MENU (Hidden on Mobile) */}
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link 
                   key={link.name} 
                   href={link.href}
-                  className="relative px-5 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors group"
+                  className={`text-sm font-medium transition-colors hover:text-white ${isActive ? 'text-white' : 'text-zinc-400'}`}
                 >
-                  <span className="relative z-10">{link.name}</span>
-                  {/* Laser Underline Effect */}
-                  <span className={`absolute bottom-0 left-0 h-[2px] bg-red-600 transition-all duration-300 ${
-                    isActive ? 'w-full shadow-[0_0_10px_red]' : 'w-0 group-hover:w-full'
-                  }`}></span>
+                  {link.name}
                 </Link>
               );
             })}
           </div>
 
-          {/* === RIGHT CTA (Pulsante Contatti) === */}
+          {/* DESKTOP CTA */}
           <div className="hidden md:block">
             <Link href="#contact">
-                <button className="group relative px-6 py-2.5 bg-white text-black font-bold text-xs uppercase tracking-widest overflow-hidden rounded-full hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(220,38,38,0.4)]">
-                    <span className="relative z-10 flex items-center gap-2">
-                        Inizia il tuo progetto <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    {/* Hover Effect Background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    {/* Text Change on Hover (Diventa bianco su sfondo rosso) */}
-                    <div className="absolute inset-0 flex items-center justify-center gap-2 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
-                         Contatto<Zap className="w-3 h-3 fill-white" />
-                    </div>
+                <button className="px-5 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2">
+                    Start Project <ArrowRight className="w-3 h-3" />
                 </button>
             </Link>
           </div>
 
-          {/* === MOBILE TOGGLE === */}
+          {/* MOBILE TOGGLE BUTTON (Visible only on Mobile) */}
           <button 
-            className="md:hidden relative z-50 text-white p-2"
+            className="md:hidden relative z-50 text-white p-2 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            {isOpen ? <X className="w-8 h-8 text-white" /> : <Menu className="w-8 h-8 text-white" />}
           </button>
         </div>
       </nav>
 
-      {/* === MOBILE FULLSCREEN MENU === */}
-      {/* Overlay Nero */}
-      <div className={`fixed inset-0 bg-black z-40 transition-all duration-500 md:hidden flex flex-col justify-center items-center ${
-        isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-      }`}>
+      {/* === MOBILE MENU OVERLAY (Fixed Fullscreen) === */}
+      {/* 
+          z-40: Sta SOTTO la top bar (z-50) così la X di chiusura si vede sempre.
+          bg-black: Sfondo nero forzato.
+      */}
+      <div 
+        style={{ backgroundColor: '#000000' }}
+        className={`fixed inset-0 z-40 flex flex-col pt-32 px-6 pb-10 transition-all duration-500 md:hidden ${
+            isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-full'
+        }`}
+      >
         
-        {/* Sfondo Decorativo */}
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-red-600/10 blur-[100px] rounded-full"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/10 blur-[100px] rounded-full"></div>
+        {/* Background Decoration */}
+        <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-red-600/10 blur-[80px] rounded-full pointer-events-none"></div>
 
-        <div className="flex flex-col gap-8 text-center relative z-10">
-           {/* Link List */}
-           {[...navLinks, { name: 'Contatto', href: '#contact' }].map((link, i) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className="group text-4xl font-black text-zinc-500 hover:text-white transition-all duration-300 flex items-center justify-center gap-4"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="text-xs font-mono text-red-600 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">0{i+1}.</span>
-              {link.name}
-            </Link>
-          ))}
-        </div>
+        <div className="flex flex-col h-full justify-between relative z-10">
+            
+            {/* LINK LIST */}
+            <div className="flex flex-col gap-4">
+                {navLinks.map((link, i) => (
+                    <Link 
+                        key={link.name} 
+                        href={link.href}
+                        className="flex items-center justify-between border-b border-zinc-900 pb-4 group"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <span className="text-3xl font-bold text-zinc-400 group-hover:text-white transition-colors">
+                            {link.name}
+                        </span>
+                        <ArrowRight className="w-5 h-5 text-zinc-600 group-hover:text-red-600 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                    </Link>
+                ))}
+            </div>
 
-        {/* Footer del Menu Mobile */}
-        <div className="absolute bottom-10 text-zinc-600 text-xs font-mono uppercase tracking-widest">
-            Red Web Studio System
+            {/* BOTTOM ACTIONS */}
+            <div className="mt-auto space-y-6">
+                <Link href="#contact" onClick={() => setIsOpen(false)}>
+                    <button className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest text-xs rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)]">
+                        Lancia il Progetto <Zap className="w-4 h-4 fill-white" />
+                    </button>
+                </Link>
+
+                <div className="flex justify-between items-center pt-6 border-t border-zinc-900">
+                     <div className="flex gap-4">
+                         <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400"><Instagram className="w-4 h-4"/></div>
+                         <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400"><Linkedin className="w-4 h-4"/></div>
+                     </div>
+                     <p className="text-[10px] text-zinc-400 font-mono uppercase">© 2026 Red Web Studio</p>
+                </div>
+            </div>
+
         </div>
       </div>
     </>

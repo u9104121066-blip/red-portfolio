@@ -15,32 +15,61 @@ export default function Home() {
       {/* ================= HERO SECTION ================= */}
       <section className="relative h-screen w-full flex flex-col items-center justify-end pb-16 md:pb-32 overflow-hidden">
 
-        {/* 1. BACKGROUND IMAGE */}
+                {/* 1. BACKGROUND IMAGE (STRATEGIA IBRIDA) */}
         <div className="absolute inset-0 z-0 bg-black flex justify-center overflow-hidden">
-            <div className="relative h-full w-full md:w-auto">
-                <img 
+            
+            {/* === MOBILE: NEXT.JS OPTIMIZED (Fill + Object Position) === */}
+            {/* Visibile solo sotto i 768px. Usa 'fill' per coprire lo schermo. */}
+            <div className="block md:hidden relative h-full w-full">
+                <Image 
                     src="/Redrit.webp" 
-                    alt="Background" 
-                    fetchPriority="high"
-                    loading="eager"
-                    decoding="async"
+                    alt="Background Mobile"
+                    fill
+                    priority
+                    quality={75}
+                    sizes="100vw"
                     /* 
-                       FIX LUMINOSITÀ: 
-                       - Mobile: opacity-90 (quasi piena luce)
-                       - Desktop: opacity-80 (leggermente più scura per contrasto testo)
+                       FIX MOBILE: 
+                       object-[50%_20%] centra la foto orizzontalmente ma la ancora 
+                       al 20% dall'alto (dove ci sono gli occhi). Niente più teste tagliate.
                     */
-                    className="h-full w-full md:w-auto object-cover object-[50%_20%] md:object-top opacity-90 md:opacity-80" 
+                    className="object-cover object-[50%_20%] opacity-100"
                     style={{ 
-                        /* Maschera leggermente meno aggressiva su mobile per far vedere meglio lo sfondo */
                         maskImage: 'linear-gradient(to bottom, black 70%, transparent 98%)',
                         WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 98%)'
                     }}
                 />
             </div>
-            {/* Sfumatura in basso ridotta su mobile per non coprire troppo l'immagine */}
-            <div className="absolute bottom-0 left-0 w-full h-[30vh] md:h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-        </div>
 
+            {/* === DESKTOP: EMULAZIONE VECCHIO TAG <img> === */}
+            {/* Visibile solo sopra i 768px. NON usa 'fill' per mantenere le proporzioni originali. */}
+            <div className="hidden md:block relative h-full w-auto">
+                <Image 
+                    src="/Redrit.webp" 
+                    alt="Background Desktop"
+                    /* 
+                       TRUCCO PER DESKTOP:
+                       Impostando width/height a 0 e sizes a 100vw, possiamo controllare 
+                       le dimensioni via CSS (h-full w-auto), esattamente come il vecchio tag <img>.
+                    */
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    priority
+                    quality={85}
+                    className="h-full w-auto object-cover object-top opacity-80"
+                    style={{ 
+                        width: 'auto', // Fondamentale per non stirare l'immagine su desktop
+                        height: '100%',
+                        maskImage: 'linear-gradient(to bottom, black 60%, transparent 95%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 95%)'
+                    }}
+                />
+            </div>
+
+            {/* Sfumatura Basso (Comune) */}
+            <div className="absolute bottom-0 left-0 w-full h-[30vh] md:h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
+        </div>
         {/* 2. CONTENT */}
         <div className="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
           
@@ -57,7 +86,7 @@ export default function Home() {
              <div className="h-[2px] w-8 md:w-16 bg-red-600"></div>
           </div>      
           
-          <p className="text-zinc-400 md:text-zinc-500 text-xs md:text-sm max-w-[300px] md:max-w-lg mx-auto mt-4 md:mt-6 leading-relaxed font-light drop-shadow-md">
+          <p className="text-zinc-300 md:text-zinc-300 text-xs md:text-sm max-w-[300px] md:max-w-lg mx-auto mt-4 md:mt-6 leading-relaxed font-light drop-shadow-md">
              Progetto ecosistemi digitali che non si limitano a convertire, ma massimizzano il valore di ogni singolo lead grazie a tracciamenti e flussi automatizzati..
           </p>
         </div>
@@ -82,9 +111,9 @@ export default function Home() {
                     </div>
                     <Reveal delay={0.2}>
                         <h3 className="text-5xl md:text-6xl font-bold text-white mb-2">7+</h3>
-                        <p className="text-base md:text-lg text-zinc-400 font-medium">Anni di esperienza</p>
+                        <p className="text-base md:text-lg text-zinc-300 font-medium">Anni di esperienza</p>
                     </Reveal>
-                    <p className="text-[10px] md:text-xs text-zinc-600 uppercase tracking-widest mt-1">Lanci High-Ticket</p>
+                    <p className="text-[10px] md:text-xs text-zinc-300 uppercase tracking-widest mt-1">Lanci High-Ticket</p>
                 </div>
 
                 <div className="space-y-4 pt-6 md:pt-8 border-t border-zinc-900">
@@ -92,14 +121,14 @@ export default function Home() {
                         <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Code2 className="w-5 h-5 text-white" /></div>
                         <div>
                             <h4 className="text-white font-bold text-sm">Architettura del funnel</h4>
-                            <p className="text-xs text-zinc-500">Soluizioni personalizzate</p>
+                            <p className="text-xs text-zinc-300">Soluizioni personalizzate</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Database className="w-5 h-5 text-white" /></div>
                         <div>
                             <h4 className="text-white font-bold text-sm">Integrazione degli strumenti</h4>
-                            <p className="text-xs text-zinc-500">Gestione data e CRM</p>
+                            <p className="text-xs text-zinc-300">Gestione data e CRM</p>
                         </div>
                     </div>
                 </div>
@@ -113,11 +142,11 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                   IL PUNTO D'INCONTRO TRA  <br /> CODICE E <span className="text-red-600">MARKETING.</span>
                 </h2>
-                <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                   Padroneggio gli stack rapidi <strong>(ClickFunnels, GoHighLevel, WordPress) </strong> per garantirti tempi di go-to-market immediati, 
                   ma intervengo con il Codice Custom <strong>(JS, API, CSS)</strong> lì dove i tool si fermano.
                 </p>
-                <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-10">
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-10">
                 Che si tratti di un lancio su ClickFunnels o di una Web App su misura, il risultato è lo stesso: un ecosistema che converte, <strong> traccia 
                 i dati con precisione chirurgica e automatizza i flussi di lavoro</strong>, senza compromessi tecnici.
                 </p>
@@ -135,7 +164,7 @@ export default function Home() {
         <Reveal>
         <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="text-center mb-8 md:mb-10">
-                <p className="text-zinc-500 text-xs uppercase tracking-[0.3em]">il mio arsenale tech</p>
+                <p className="text-zinc-300 text-xs uppercase tracking-[0.3em]">il mio arsenale tech</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-zinc-800">
@@ -150,8 +179,8 @@ export default function Home() {
                     { name: 'Wordpress', icon: <Layers className="w-6 h-6"/> },
                 ].map((item, i) => (
                     <div key={i} className="group border-r border-b border-zinc-800 p-6 md:p-8 flex flex-col items-center justify-center hover:bg-zinc-900/50 transition duration-500 cursor-default">
-                        <div className="mb-4 text-zinc-600 group-hover:text-white transition duration-300">{item.icon}</div>
-                        <span className="text-base md:text-lg font-bold text-zinc-500 group-hover:text-white transition duration-300 font-mono">{item.name}</span>
+                        <div className="mb-4 text-zinc-300 group-hover:text-white transition duration-300">{item.icon}</div>
+                        <span className="text-base md:text-lg font-bold text-zinc-300 group-hover:text-white transition duration-300 font-mono">{item.name}</span>
                     </div>
                 ))}
             </div>
@@ -172,59 +201,64 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div className="group p-6 md:p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500">
                     <div className="flex justify-between items-start mb-6">
-                        <span className="text-zinc-600 font-mono text-sm">01.</span>
+                        <span className="text-zinc-300 font-mono text-sm">01.</span>
                         <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
                             <Layers className="w-6 h-6" />
                         </div>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">FUNNEL ENGINEERING & FRONTEND</h3>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Architetture High-Ticket</strong>: Progettazione integrale del percorso utente per massimizzare AOV (Average Order Value) e LTV, utilizzando sia builder rapidi che codice custom.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Sviluppo Web App (React/Next.js)</strong>: Creazione di interfacce utente ultra-veloci e SEO-friendly per progetti che richiedono performance superiori ai classici CMS.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
                         Stack: React, Next.js, ClickFunnels, GHL, WordPress, Tailwind CSS.
                     </p>
                 </div>
-                <div className="relative w-full aspect-auto md:aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
-                    {/* 
-                        FIX LUMINOSITÀ SERVICE:
-                        - Mobile: opacity-100 (Sempre acceso, niente hover)
-                        - Desktop: opacity-80 -> opacity-100 (Effetto hover preservato)
-                    */}
-                    <img src="/funnel.webp" alt="Funnel" className="w-full h-auto md:h-full md:object-cover transition duration-700 opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105" />
-                    {/* Sfumatura ridotta su mobile */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                </div>
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+    <Image 
+        src="/funnel.webp" 
+        alt="Funnel" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover transition duration-700 opacity-100 md:opacity-80 md:group-hover:opacity-100 md:group-hover:scale-105" 
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+</div>
             </div>
 
             {/* SERVICE 02 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                <div className="relative w-full aspect-auto md:aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group order-2 lg:order-1">
-                     {/* FIX LUMINOSITÀ */}
-                    <img src="/funnel3.webp" alt="Tracking" className="w-full h-auto md:h-full md:object-cover transition duration-700 opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                </div>
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group order-2 lg:order-1">
+    <Image 
+        src="/funnel3.webp" 
+        alt="Tracking" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover transition duration-700 opacity-100 md:opacity-80 md:group-hover:opacity-100 md:group-hover:scale-105" 
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+</div>
                 <div className="group p-6 md:p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500 order-1 lg:order-2">
                     <div className="flex justify-between items-start mb-6">
-                        <span className="text-zinc-600 font-mono text-sm">02.</span>
+                        <span className="text-zinc-300 font-mono text-sm">02.</span>
                         <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
                             <Server className="w-6 h-6" />
                         </div>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">DATA INTEGRITY & ANALYTICS</h3>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Server-Side Tracking</strong>: Implementazione avanzata di GTM Server-Side e CAPI (Facebook, TikTok) per recuperare i dati persi dai blocchi dei browser e cookie policy.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>UTM Strategy Avanzata</strong>: Standardizzazione dei parametri di tracciamento per sapere esattamente quale ad, email o link ha generato la vendita.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Audit & Debugging</strong>: Analisi profonda di setup esistenti per individuare discrepanze nei dati tra Business Manager e CRM.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
                         Stack: Google Tag Manager (Web & Server), GA4, Clarity, Stape.io.
                     </p>
                 </div>
@@ -234,30 +268,35 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div className="group p-6 md:p-8 border border-zinc-800 bg-zinc-900/20 rounded-2xl hover:border-red-600/30 transition duration-500">
                     <div className="flex justify-between items-start mb-6">
-                        <span className="text-zinc-600 font-mono text-sm">03.</span>
+                        <span className="text-zinc-300 font-mono text-sm">03.</span>
                         <div className="p-2 bg-black rounded-full border border-zinc-800 text-white group-hover:text-red-600 transition">
                             <Cpu className="w-6 h-6" />
                         </div>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">HYPER-AUTOMATION & BACKEND</h3>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>CRM Integration</strong>: Sincronizzazione bidirezionale dei dati tra il funnel e il database contatti (ActiveCampaign, HubSpot, GoHighLevel) per nurturing automatico.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Dashboards & Reporting</strong>: Estrazione dati via API per alimentare dashboard di controllo KPI in tempo reale, eliminando i report manuali su Excel.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
                         <strong>Error Handling</strong>: Sistemi di notifica automatica (Slack/Telegram) che avvisano immediatamente se un lead non viene processato correttamente.
                     </p>
-                    <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
+                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-mono text-sm border-t border-zinc-800 pt-4">
                         Stack: n8n, Zapier, Make, Google Sheets API, Webhooks, Node.js.
                     </p>
                 </div>
-                <div className="relative w-full aspect-auto md:aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
-                    {/* FIX LUMINOSITÀ */}
-                    <img src="/funnel4.webp" alt="Automation" className="w-full h-auto md:h-full md:object-cover transition duration-700 opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                </div>
+                <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group">
+    <Image 
+        src="/funnel4.webp" 
+        alt="Automation" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover transition duration-700 opacity-100 md:opacity-80 md:group-hover:opacity-100 md:group-hover:scale-105" 
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+</div>
             </div>
 
         </div>
@@ -273,7 +312,7 @@ export default function Home() {
                         <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Lavori Selezionati</h6>
                         <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">Progetti</h2>
                     </div>
-                    <Link href="/progetti" className="hidden md:flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest border-b border-zinc-800 pb-1 hover:text-red-600 hover:border-red-600 transition-all duration-300">
+                    <Link href="/progetti" className="hidden md:flex items-center gap-2 text-xs font-bold text-zinc-300 uppercase tracking-widest border-b border-zinc-800 pb-1 hover:text-red-600 hover:border-red-600 transition-all duration-300">
                         Vedi Tutti i Progetti <ArrowRight className="w-4 h-4"/>
                     </Link>
                 </div>
@@ -286,22 +325,19 @@ export default function Home() {
                     <div className="group cursor-pointer mb-8 md:mb-24">
                         <Link href="/progetti/inglese-divertente">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-4 md:mb-6">
-                                {/* 
-                                    FIX LUMINOSITÀ PORTFOLIO:
-                                    Su mobile l'immagine è full opacity (100%) e senza sfumatura nera aggressiva
-                                    Su desktop rimane l'effetto opacity-60 -> 100 in hover
-                                */}
-                                <img 
-                                    src="/inglese.webp" 
-                                    alt="Inglese Divertente" 
-                                    className="w-full h-full object-cover opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                            </div>
+    <Image 
+        src="/inglese.webp" 
+        alt="Inglese Divertente" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
+</div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
                                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-red-600 transition">Ecosistema Tripwire ad Alta Scalabilità</h3>
-                                    <p className="text-zinc-500 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">WordPress • CRM Automation • Sales Ops</p>
+                                    <p className="text-zinc-300 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">WordPress • CRM Automation • Sales Ops</p>
                                 </div>
                                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
                                     <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-3 h-3 md:w-4 md:h-4" />
@@ -316,17 +352,19 @@ export default function Home() {
                     <div className="group cursor-pointer md:mt-32 mb-8 md:mb-24">
                         <Link href="/progetti/digital-shipping-revolution">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-4 md:mb-6">
-                                <img 
-                                    src="/digital1.webp" 
-                                    alt="Digital Shipping" 
-                                    className="w-full h-full object-cover opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                            </div>
+    <Image 
+        src="/digital1.webp" 
+        alt="Digital Shipping" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
+</div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
                                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-red-600 transition">Architettura B2B a Massimizzazione Profonda</h3>
-                                    <p className="text-zinc-500 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">GoHighLevel • Stripe API • Webhooks</p>
+                                    <p className="text-zinc-300 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">GoHighLevel • Stripe API • Webhooks</p>
                                 </div>
                                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
                                     <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-3 h-3 md:w-4 md:h-4" />
@@ -341,17 +379,19 @@ export default function Home() {
                     <div className="group cursor-pointer mb-8 md:mb-24">
                         <Link href="/progetti/misterbox">
                             <div className="relative overflow-hidden rounded-2xl aspect-video bg-zinc-900 border border-zinc-800 mb-4 md:mb-6">
-                                <img 
-                                    src="/mrbox1.webp" 
-                                    alt="Misterbox" 
-                                    className="w-full h-full object-cover object-[center_35%] opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
-                            </div>
+    <Image 
+        src="/mrbox1.webp" 
+        alt="Misterbox" 
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover object-[center_35%] opacity-100 md:opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition duration-700"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 md:opacity-60"></div>
+</div>
                             <div className="flex justify-between items-start px-2">
                                 <div>
                                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-red-600 transition">Piattaforma Commerce Gamificata & Algoritmica</h3>
-                                    <p className="text-zinc-500 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">Next.js 14 • NestJS • Prisma • Docker</p>
+                                    <p className="text-zinc-300 mt-2 text-[10px] md:text-xs font-mono uppercase tracking-widest">Next.js 14 • NestJS • Prisma • Docker</p>
                                 </div>
                                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-red-600 group-hover:bg-red-600 transition-all duration-300 shrink-0">
                                     <ArrowRight className="text-white -rotate-45 group-hover:rotate-0 transition duration-300 w-3 h-3 md:w-4 md:h-4" />
@@ -379,7 +419,7 @@ export default function Home() {
         <div className="max-w-xl mx-auto relative z-10">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">SCALIAMO LA TUA INFRASTRUTTURA</h2>
-            <p className="text-zinc-400 text-sm md:text-base">Compila il modulo per richiedere un'analisi tecnica del tuo progetto.</p>
+            <p className="text-zinc-300 text-sm md:text-base">Compila il modulo per richiedere un'analisi tecnica del tuo progetto.</p>
           </div>
 
           <div className="bg-zinc-950 border border-zinc-800 p-2 rounded-3xl shadow-2xl">
