@@ -98,26 +98,26 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-zinc-900 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-zinc-500 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
             
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <p className="text-[#666666] text-[11px] font-medium tracking-tight">
+                <p className="text-[#b0b0b0] text-[11px] font-medium tracking-tight">
                     © {new Date().getFullYear()} Red Web Studio. P.IVA 03902180789
                 </p>
                 <div className="flex gap-6">
-    <Link href="/privacy-policy" className="text-[#666666] text-[11px] hover:text-zinc-400 transition underline underline-offset-4">Privacy Policy</Link>
-    <Link href="/cookie-policy" className="text-[#666666] text-[11px] hover:text-zinc-400 transition underline underline-offset-4">Cookie Policy</Link>
-    <Link href="/termini-e-condizioni" className="text-[#666666] text-[11px] hover:text-zinc-400 transition underline underline-offset-4">Termini di Servizio</Link>
+    <Link href="/privacy-policy" className="text-[#b0b0b0] text-[11px] hover:text-zinc-300 transition underline underline-offset-4">Privacy Policy</Link>
+    <Link href="/cookie-policy" className="text-[#b0b0b0] text-[11px] hover:text-zinc-300 transition underline underline-offset-4">Cookie Policy</Link>
+    <Link href="/termini-e-condizioni" className="text-[#b0b0b0] text-[11px] hover:text-zinc-300 transition underline underline-offset-4">Termini di Servizio</Link>
 </div>
             </div>
 
             {/* Pulsante Torna Su */}
             <button 
                 onClick={scrollToTop}
-                className="group flex items-center gap-3 text-[#666666] hover:text-white transition-colors"
+                className="group flex items-center gap-3 text-[#b0b0b0] hover:text-white transition-colors"
             >
                 <span className="text-[10px] uppercase tracking-widest font-bold">Torna su</span>
-                <div className="w-8 h-8 rounded-lg border border-zinc-800 flex items-center justify-center group-hover:border-red-600 transition-colors">
+                <div className="w-8 h-8 rounded-lg border border-zinc-500 flex items-center justify-center group-hover:border-red-600 transition-colors">
                     <ArrowUp className="w-3 h-3" />
                 </div>
             </button>

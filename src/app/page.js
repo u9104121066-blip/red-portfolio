@@ -138,7 +138,7 @@ export default function Home() {
           {/* RIGHT: TEXT */}
           <div className="lg:col-span-7">
             <Reveal delay={0.4}>
-                <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Chi sono</h6>
+                <p className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Chi sono</p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                   IL PUNTO D'INCONTRO TRA  <br /> CODICE E <span className="text-red-600">MARKETING.</span>
                 </h2>
@@ -191,7 +191,7 @@ export default function Home() {
       {/* ================= SERVICES SECTION ================= */}
       <section id="services" className="py-12 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-20">
-          <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Expertise</h6>
+          <p className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Expertise</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">COMPETENZE TECNICHE & <br /> SPECIALIZZAZIONI</h2>
         </div>
 
@@ -309,7 +309,7 @@ export default function Home() {
             <Reveal>
                 <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
                     <div>
-                        <h6 className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Lavori Selezionati</h6>
+                        <p className="text-red-600 font-bold uppercase tracking-widest text-xs mb-4">Lavori Selezionati</p>
                         <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">Progetti</h2>
                     </div>
                     <Link href="/progetti" className="hidden md:flex items-center gap-2 text-xs font-bold text-zinc-300 uppercase tracking-widest border-b border-zinc-800 pb-1 hover:text-red-600 hover:border-red-600 transition-all duration-300">

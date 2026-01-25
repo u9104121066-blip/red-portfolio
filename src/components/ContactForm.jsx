@@ -89,7 +89,7 @@ export default function ContactForm() {
             
             {/* NOME */}
             <div className="group/input relative">
-                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-2 block flex items-center gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-300 font-bold mb-2 block flex items-center gap-2">
                     <User className="w-3 h-3 text-red-600" /> Identity
                 </label>
                 <input 
@@ -107,7 +107,7 @@ export default function ContactForm() {
 
             {/* EMAIL */}
             <div className="group/input relative">
-                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-2 block flex items-center gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-300 font-bold mb-2 block flex items-center gap-2">
                     <Mail className="w-3 h-3 text-red-600" /> Digital Address
                 </label>
                 <input 
@@ -124,7 +124,7 @@ export default function ContactForm() {
 
             {/* TELEFONO (NUOVO) */}
             <div className="group/input relative md:col-span-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-2 block flex items-center gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-300 font-bold mb-2 block flex items-center gap-2">
                     <Smartphone className="w-3 h-3 text-red-600" /> Direct Line
                 </label>
                 <input 
@@ -142,7 +142,7 @@ export default function ContactForm() {
 
         {/* MESSAGGIO */}
         <div className="group/input relative">
-            <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-2 block flex items-center gap-2">
+            <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-300 font-bold mb-2 block flex items-center gap-2">
                 <MessageSquare className="w-3 h-3 text-red-600" /> Transmission Data
             </label>
             <textarea 
@@ -152,7 +152,7 @@ export default function ContactForm() {
                 onChange={handleChange}
                 rows={5}
                 placeholder="Descrivi il progetto..."
-                className="w-full bg-zinc-900/50 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:border-red-600 focus:bg-zinc-900 transition-all duration-300 placeholder:text-zinc-500 font-medium resize-none"
+                className="w-full bg-zinc-900/50 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:border-red-500 focus:bg-zinc-900 transition-all duration-300 placeholder:text-zinc-500 font-medium resize-none"
             ></textarea>
              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-transparent group-focus-within/input:border-red-600 transition-all duration-300"></div>
         </div>
@@ -184,8 +184,8 @@ export default function ContactForm() {
         
         {/* Footer Tecnico */}
         <div className="flex justify-between items-center mt-6 border-t border-zinc-900 pt-4 opacity-50">
-             <span className="text-[9px] text-zinc-500 font-mono uppercase">Encrypted: AES-256</span>
-             <span className="text-[9px] text-zinc-500 font-mono uppercase">Server: ONLINE</span>
+             <span className="text-[9px] text-zinc-300 font-mono uppercase">Encrypted: AES-256</span>
+             <span className="text-[9px] text-zinc-300 font-mono uppercase">Server: ONLINE</span>
         </div>
 
       </form>

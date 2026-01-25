@@ -57,17 +57,21 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* DESKTOP MENU (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center gap-6">
+                     {/* DESKTOP MENU (Hidden on Mobile) */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link 
                   key={link.name} 
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-white ${isActive ? 'text-white' : 'text-zinc-400'}`}
+                  className={`relative px-5 py-2 text-sm font-medium transition-colors group ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
                 >
-                  {link.name}
+                  <span className="relative z-10">{link.name}</span>
+                  {/* Laser Underline Effect: Se attivo è larga 100%, altrimenti 0 e cresce in hover */}
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-red-600 transition-all duration-300 ${
+                    isActive ? 'w-full shadow-[0_0_10px_red]' : 'w-0 group-hover:w-full'
+                  }`}></span>
                 </Link>
               );
             })}
@@ -77,18 +81,20 @@ const Navbar = () => {
           <div className="hidden md:block">
             <Link href="#contact">
                 <button className="px-5 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2">
-                    Start Project <ArrowRight className="w-3 h-3" />
+                    Iniziamo il progetto <ArrowRight className="w-3 h-3" />
                 </button>
             </Link>
           </div>
 
           {/* MOBILE TOGGLE BUTTON (Visible only on Mobile) */}
-          <button 
-            className="md:hidden relative z-50 text-white p-2 focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-8 h-8 text-white" /> : <Menu className="w-8 h-8 text-white" />}
-          </button>
+          {/* MOBILE TOGGLE BUTTON */}
+<button 
+  className="md:hidden relative z-50 text-white p-2 focus:outline-none"
+  onClick={() => setIsOpen(!isOpen)}
+  aria-label={isOpen ? "Chiudi Menu" : "Apri Menu"} // <--- AGGIUNGI QUESTA RIGA
+>
+  {isOpen ? <X className="w-8 h-8 text-white" /> : <Menu className="w-8 h-8 text-white" />}
+</button>
         </div>
       </nav>
 
@@ -136,9 +142,16 @@ const Navbar = () => {
 
                 <div className="flex justify-between items-center pt-6 border-t border-zinc-900">
                      <div className="flex gap-4">
-                         <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400"><Instagram className="w-4 h-4"/></div>
-                         <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400"><Linkedin className="w-4 h-4"/></div>
-                     </div>
+    <a href="#" aria-label="Instagram" className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+        <Instagram className="w-4 h-4"/>
+    </a>
+    <a href="#" aria-label="LinkedIn" className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+        <Linkedin className="w-4 h-4"/>
+    </a>
+    <a href="mailto:info@redwebstudio.it" aria-label="Invia Email" className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+        <Mail className="w-4 h-4"/>
+    </a>
+</div>
                      <p className="text-[10px] text-zinc-400 font-mono uppercase">© 2026 Red Web Studio</p>
                 </div>
             </div>
