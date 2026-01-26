@@ -114,7 +114,7 @@ export default function Home() {
                         <Zap className="w-6 h-6" />
                     </div>
                     <Reveal delay={0.2}>
-                        <h3 className="text-5xl md:text-6xl font-bold text-white mb-2">7+</h3>
+                        <p className="text-5xl md:text-6xl font-bold text-white mb-2">7+</p>
                         <p className="text-base md:text-lg text-zinc-300 font-medium">Anni di esperienza</p>
                     </Reveal>
                     <p className="text-[10px] md:text-xs text-zinc-300 uppercase tracking-widest mt-1">Lanci High-Ticket</p>
