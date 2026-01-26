@@ -79,7 +79,7 @@ const Navbar = () => {
 
           {/* DESKTOP CTA */}
           <div className="hidden md:block">
-            <Link href="#contact">
+            <Link href="/contatto">
                 <button className="px-5 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2">
                     Iniziamo il progetto <ArrowRight className="w-3 h-3" />
                 </button>
