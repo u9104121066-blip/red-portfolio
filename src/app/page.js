@@ -18,7 +18,7 @@ export default function Home() {
                 {/* 1. BACKGROUND IMAGE (STRATEGIA IBRIDA) */}
         <div className="absolute inset-0 z-0 bg-black flex justify-center overflow-hidden">
             
-            {/* === MOBILE: NEXT.JS OPTIMIZED (Fill + Object Position) === */}
+                        {/* === MOBILE: NEXT.JS OPTIMIZED (Fill + Object Position) === */}
             {/* Visibile solo sotto i 768px. Usa 'fill' per coprire lo schermo. */}
             <div className="block md:hidden relative h-full w-full">
                 <Image 
@@ -39,8 +39,12 @@ export default function Home() {
                         WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 98%)'
                     }}
                 />
-            </div>
 
+                {/* === FIX CONTRASTO MOBILE === */}
+                {/* Questo gradiente parte dal basso (nero solido) e sfuma verso l'alto. 
+                    Serve per staccare il testo bianco dalla camicia/sfondo chiaro. */}
+                <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-black via-black/90 to-transparent z-10"></div>
+            </div>
             {/* === DESKTOP: EMULAZIONE VECCHIO TAG <img> === */}
             {/* Visibile solo sopra i 768px. NON usa 'fill' per mantenere le proporzioni originali. */}
             <div className="hidden md:block relative h-full w-auto">
