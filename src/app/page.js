@@ -87,7 +87,7 @@ export default function Home() {
           </div>      
           
           <p className="text-zinc-300 md:text-zinc-300 text-xs md:text-sm max-w-[300px] md:max-w-lg mx-auto mt-4 md:mt-6 leading-relaxed font-light drop-shadow-md">
-             Progetto ecosistemi digitali che non si limitano a convertire, ma massimizzano il valore di ogni singolo lead grazie a tracciamenti e flussi automatizzati..
+             Progetto ecosistemi digitali che non si limitano a convertire, ma massimizzano il valore di ogni singolo lead grazie a tracciamenti e flussi automatizzati.
           </p>
         </div>
       </section>
@@ -150,10 +150,11 @@ export default function Home() {
                 Che si tratti di un lancio su ClickFunnels o di una Web App su misura, il risultato è lo stesso: un ecosistema che converte, <strong> traccia 
                 i dati con precisione chirurgica e automatizza i flussi di lavoro</strong>, senza compromessi tecnici.
                 </p>
-                
-                <button className="w-full md:w-auto px-8 py-4 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)]">
-                    Scopri il mio Metodo <ArrowRight className="w-4 h-4" />
-                </button>
+               <Link href="/chi-sono">
+    <button className="w-full md:w-auto px-8 py-4 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)]">
+        Scopri il mio Metodo <ArrowRight className="w-4 h-4" />
+    </button>
+</Link>
             </Reveal>
           </div>
         </div>
