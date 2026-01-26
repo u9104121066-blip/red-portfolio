@@ -81,7 +81,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <Link href="/contatto">
                 <button className="px-5 py-2 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2">
-                    Iniziamo il progetto <ArrowRight className="w-3 h-3" />
+                    Parliamo Del Progetto <ArrowRight className="w-3 h-3" />
                 </button>
             </Link>
           </div>
@@ -136,7 +136,7 @@ const Navbar = () => {
             <div className="mt-auto space-y-6">
                 <Link href="/contatto" onClick={() => setIsOpen(false)}>
                     <button className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest text-xs rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)]">
-                        Iniziamo il Progetto <Zap className="w-4 h-4 fill-white" />
+                        Parliamo Del Progetto <Zap className="w-4 h-4 fill-white" />
                     </button>
                 </Link>
 
